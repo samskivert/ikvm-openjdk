@@ -1,0 +1,159 @@
+------- Ant diagnostics report -------
+Apache Ant version 1.7.0 compiled on August 29 2007
+
+-------------------------------------------
+ Implementation Version
+-------------------------------------------
+core tasks     : 1.7.0
+optional tasks : not available
+
+-------------------------------------------
+ ANT PROPERTIES
+-------------------------------------------
+ant.version: Apache Ant version 1.7.0 compiled on August 29 2007
+ant.java.version: 1.6
+ant.core.lib: /usr/share/ant/lib/ant.jar
+ant.home: /usr/share/ant
+
+-------------------------------------------
+ ANT_HOME/lib jar listing
+-------------------------------------------
+ant.home: /usr/share/ant
+ant-apache-resolver.jar (4064 bytes)
+ant-apache-oro.jar (40144 bytes)
+ant-javamail.jar (7166 bytes)
+ant-jdepend.jar (8290 bytes)
+ant-apache-log4j.jar (3042 bytes)
+ant-jsch.jar (30640 bytes)
+ant-jmf.jar (6599 bytes)
+ant-nodeps.jar (436656 bytes)
+ant-apache-bsf.jar (4047 bytes)
+ant-junit.jar (94264 bytes)
+ant-commons-net.jar (47957 bytes)
+ant-antlr.jar (5912 bytes)
+ant-apache-bcel.jar (8784 bytes)
+ant-launcher.jar (11814 bytes)
+ant-swing.jar (6715 bytes)
+ant.jar (1327716 bytes)
+ant-trax.jar (6908 bytes)
+ant-apache-regexp.jar (3743 bytes)
+ant-bootstrap.jar (16489 bytes)
+ant-commons-logging.jar (4035 bytes)
+
+-------------------------------------------
+ USER_HOME/.ant/lib jar listing
+-------------------------------------------
+user.home: /home/jeroen
+No such directory.
+
+-------------------------------------------
+ Tasks availability
+-------------------------------------------
+image : Not Available (the implementation class is not present)
+sshexec : Missing dependency com.jcraft.jsch.UserInfo
+wlrun : Not Available (the implementation class is not present)
+scp : Missing dependency com.jcraft.jsch.UserInfo
+stlist : Not Available (the implementation class is not present)
+netrexxc : Not Available (the implementation class is not present)
+starteam : Not Available (the implementation class is not present)
+stylebook : Not Available (the implementation class is not present)
+stlabel : Not Available (the implementation class is not present)
+jdepend : Missing dependency jdepend.xmlui.JDepend
+stcheckin : Not Available (the implementation class is not present)
+stcheckout : Not Available (the implementation class is not present)
+ejbc : Not Available (the implementation class is not present)
+wlstop : Not Available (the implementation class is not present)
+ddcreator : Not Available (the implementation class is not present)
+A task being missing/unavailable should only matter if you are trying to use it
+
+-------------------------------------------
+ org.apache.env.Which diagnostics
+-------------------------------------------
+Not available.
+Download it at http://xml.apache.org/commons/
+
+-------------------------------------------
+ XML Parser information
+-------------------------------------------
+XML Parser : org.apache.xerces.jaxp.SAXParserImpl
+XML Parser Location: /usr/share/java/xercesImpl.jar
+Namespace-aware parser : org.apache.xerces.jaxp.SAXParserImpl$JAXPSAXParser
+Namespace-aware parser Location: /usr/share/java/xercesImpl.jar
+
+-------------------------------------------
+ System properties
+-------------------------------------------
+java.runtime.name : Java(TM) SE Runtime Environment
+sun.boot.library.path : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/amd64
+java.vm.version : 10.0-b22
+ant.library.dir : /usr/share/ant/lib
+java.vm.vendor : Sun Microsystems Inc.
+java.vendor.url : http://java.sun.com/
+path.separator : :
+java.vm.name : Java HotSpot(TM) 64-Bit Server VM
+file.encoding.pkg : sun.io
+user.country : US
+sun.java.launcher : SUN_STANDARD
+sun.os.patch.level : unknown
+java.vm.specification.name : Java Virtual Machine Specification
+user.dir : /home/jeroen/openjdk6-b22/langtools/make
+java.runtime.version : 1.6.0_06-b02
+java.awt.graphicsenv : sun.awt.X11GraphicsEnvironment
+java.endorsed.dirs : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/endorsed
+os.arch : amd64
+java.io.tmpdir : /home/jeroen/openjdk6-b22/build/linux-amd64/langtools/build/ant-tmp
+line.separator : 
+
+java.vm.specification.vendor : Sun Microsystems Inc.
+os.name : Linux
+ant.home : /usr/share/ant
+sun.jnu.encoding : ANSI_X3.4-1968
+java.library.path : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/amd64/server:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/amd64:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/../lib/amd64:/usr/java/packages/lib/amd64:/lib:/usr/lib
+java.specification.name : Java Platform API Specification
+java.class.version : 50.0
+sun.management.compiler : HotSpot 64-Bit Server Compiler
+os.version : 2.6.24-18-generic
+user.home : /home/jeroen
+user.timezone : Europe/Amsterdam
+java.awt.printerjob : sun.print.PSPrinterJob
+file.encoding : ANSI_X3.4-1968
+java.specification.version : 1.6
+user.name : jeroen
+java.class.path : /usr/share/ant/lib/ant-launcher.jar:/usr/share/java/xmlParserAPIs.jar:/usr/share/java/xercesImpl.jar:/usr/share/ant/lib/ant-apache-resolver.jar:/usr/share/ant/lib/ant-apache-oro.jar:/usr/share/ant/lib/ant-javamail.jar:/usr/share/ant/lib/ant-jdepend.jar:/usr/share/ant/lib/ant-apache-log4j.jar:/usr/share/ant/lib/ant-jsch.jar:/usr/share/ant/lib/ant-jmf.jar:/usr/share/ant/lib/ant-nodeps.jar:/usr/share/ant/lib/ant-apache-bsf.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-commons-net.jar:/usr/share/ant/lib/ant-antlr.jar:/usr/share/ant/lib/ant-apache-bcel.jar:/usr/share/ant/lib/ant-launcher.jar:/usr/share/ant/lib/ant-swing.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-trax.jar:/usr/share/ant/lib/ant-apache-regexp.jar:/usr/share/ant/lib/ant-bootstrap.jar:/usr/share/ant/lib/ant-commons-logging.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/lib/tools.jar
+java.vm.specification.version : 1.0
+sun.arch.data.model : 64
+java.home : /usr/lib/jvm/java-6-sun-1.6.0.06/jre
+java.specification.vendor : Sun Microsystems Inc.
+user.language : en
+java.vm.info : mixed mode
+java.version : 1.6.0_06
+java.ext.dirs : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/ext:/usr/java/packages/lib/ext
+sun.boot.class.path : /usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/resources.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/rt.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/jsse.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/jce.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/lib/charsets.jar:/usr/lib/jvm/java-6-sun-1.6.0.06/jre/classes
+java.vendor : Sun Microsystems Inc.
+file.separator : /
+java.vendor.url.bug : http://java.sun.com/cgi-bin/bugreport.cgi
+sun.cpu.endian : little
+sun.io.unicode.encoding : UnicodeLittle
+sun.desktop : gnome
+sun.cpu.isalist : 
+
+-------------------------------------------
+ Temp dir
+-------------------------------------------
+Temp dir is /home/jeroen/openjdk6-b22/build/linux-amd64/langtools/build/ant-tmp
+Temp dir is writeable
+Temp dir alignment with system clock is -600 ms
+
+-------------------------------------------
+ Locale information
+-------------------------------------------
+Timezone Central European Time offset=3600000
+
+-------------------------------------------
+ Proxy information
+-------------------------------------------
+Java1.5+ proxy settings:
+Direct connection
+
+
+Apache Ant version 1.7.0 compiled on August 29 2007
