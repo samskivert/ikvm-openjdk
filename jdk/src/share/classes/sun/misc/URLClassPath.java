@@ -49,7 +49,7 @@ import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.HttpURLConnection;
+// import java.net.HttpURLConnection;
 import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
 import java.io.File;
@@ -429,15 +429,15 @@ public class URLClassPath {
                     if ((perm instanceof java.io.FilePermission) &&
                         perm.getActions().indexOf("read") != -1) {
                         security.checkRead(perm.getName());
-                    } else if ((perm instanceof
-                        java.net.SocketPermission) &&
-                        perm.getActions().indexOf("connect") != -1) {
-                        URL locUrl = url;
-                        if (urlConnection instanceof JarURLConnection) {
-                            locUrl = ((JarURLConnection)urlConnection).getJarFileURL();
-                        }
-                        security.checkConnect(locUrl.getHost(),
-                                              locUrl.getPort());
+                    // } else if ((perm instanceof
+                    //     java.net.SocketPermission) &&
+                    //     perm.getActions().indexOf("connect") != -1) {
+                    //     URL locUrl = url;
+                    //     if (urlConnection instanceof JarURLConnection) {
+                    //         locUrl = ((JarURLConnection)urlConnection).getJarFileURL();
+                    //     }
+                    //     security.checkConnect(locUrl.getHost(),
+                    //                           locUrl.getPort());
                     } else {
                         throw se;
                     }
@@ -485,17 +485,17 @@ public class URLClassPath {
                  * check if the resource exists.
                  */
                 URLConnection uc = url.openConnection();
-                if (uc instanceof HttpURLConnection) {
-                    HttpURLConnection hconn = (HttpURLConnection)uc;
-                    hconn.setRequestMethod("HEAD");
-                    if (hconn.getResponseCode() >= HttpURLConnection.HTTP_BAD_REQUEST) {
-                        return null;
-                    }
-                } else {
+                // if (uc instanceof HttpURLConnection) {
+                //     HttpURLConnection hconn = (HttpURLConnection)uc;
+                //     hconn.setRequestMethod("HEAD");
+                //     if (hconn.getResponseCode() >= HttpURLConnection.HTTP_BAD_REQUEST) {
+                //         return null;
+                //     }
+                // } else {
                     // our best guess for the other cases
                     InputStream is = url.openStream();
                     is.close();
-                }
+                // }
                 return url;
             } catch (Exception e) {
                 return null;

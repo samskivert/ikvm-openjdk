@@ -35,7 +35,7 @@ import java.io.InputStream;
 import java.io.Reader;
 import java.util.Iterator;
 
-import javax.activation.DataHandler;
+// import javax.activation.DataHandler;
 
 /**
  * A single attachment to a <code>SOAPMessage</code> object. A <code>SOAPMessage</code>
@@ -321,33 +321,33 @@ public abstract class AttachmentPart {
         InputStream content, String contentType) throws SOAPException;
 
 
-    /**
-     * Gets the <code>DataHandler</code> object for this <code>AttachmentPart</code>
-     * object.
-     *
-     * @return the <code>DataHandler</code> object associated with this
-     *         <code>AttachmentPart</code> object
-     *
-     * @exception SOAPException if there is no data in
-     * this <code>AttachmentPart</code> object
-     */
-    public abstract DataHandler getDataHandler()
-        throws SOAPException;
+    // /**
+    //  * Gets the <code>DataHandler</code> object for this <code>AttachmentPart</code>
+    //  * object.
+    //  *
+    //  * @return the <code>DataHandler</code> object associated with this
+    //  *         <code>AttachmentPart</code> object
+    //  *
+    //  * @exception SOAPException if there is no data in
+    //  * this <code>AttachmentPart</code> object
+    //  */
+    // public abstract DataHandler getDataHandler()
+    //     throws SOAPException;
 
-    /**
-     * Sets the given <code>DataHandler</code> object as the data handler
-     * for this <code>AttachmentPart</code> object. Typically, on an incoming
-     * message, the data handler is automatically set. When
-     * a message is being created and populated with content, the
-     * <code>setDataHandler</code> method can be used to get data from
-     * various data sources into the message.
-     *
-     * @param dataHandler the <code>DataHandler</code> object to be set
-     *
-     * @exception IllegalArgumentException if there was a problem with
-     *            the specified <code>DataHandler</code> object
-     */
-    public abstract void setDataHandler(DataHandler dataHandler);
+    // /**
+    //  * Sets the given <code>DataHandler</code> object as the data handler
+    //  * for this <code>AttachmentPart</code> object. Typically, on an incoming
+    //  * message, the data handler is automatically set. When
+    //  * a message is being created and populated with content, the
+    //  * <code>setDataHandler</code> method can be used to get data from
+    //  * various data sources into the message.
+    //  *
+    //  * @param dataHandler the <code>DataHandler</code> object to be set
+    //  *
+    //  * @exception IllegalArgumentException if there was a problem with
+    //  *            the specified <code>DataHandler</code> object
+    //  */
+    // public abstract void setDataHandler(DataHandler dataHandler);
 
 
     /**

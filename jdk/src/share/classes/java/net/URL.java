@@ -204,7 +204,7 @@ public final class URL implements java.io.Serializable {
      * The host's IP address, used in equals and hashCode.
      * Computed on demand. An uninitialized or unknown hostAddress is null.
      */
-    transient InetAddress hostAddress;
+    // transient InetAddress hostAddress;
 
     /**
      * The URLStreamHandler for this URL.
@@ -364,13 +364,13 @@ public final class URL implements java.io.Serializable {
      */
     public URL(String protocol, String host, int port, String file,
                URLStreamHandler handler) throws MalformedURLException {
-        if (handler != null) {
-            SecurityManager sm = System.getSecurityManager();
-            if (sm != null) {
-                // check for permission to specify a handler
-                checkSpecifyHandler(sm);
-            }
-        }
+        // if (handler != null) {
+        //     SecurityManager sm = System.getSecurityManager();
+        //     if (sm != null) {
+        //         // check for permission to specify a handler
+        //         checkSpecifyHandler(sm);
+        //     }
+        // }
 
         protocol = protocol.toLowerCase();
         this.protocol = protocol;
@@ -511,12 +511,12 @@ public final class URL implements java.io.Serializable {
         boolean isRelative = false;
 
         // Check for permission to specify a handler
-        if (handler != null) {
-            SecurityManager sm = System.getSecurityManager();
-            if (sm != null) {
-                checkSpecifyHandler(sm);
-            }
-        }
+        // if (handler != null) {
+        //     SecurityManager sm = System.getSecurityManager();
+        //     if (sm != null) {
+        //         checkSpecifyHandler(sm);
+        //     }
+        // }
 
         try {
             limit = spec.length();
@@ -643,9 +643,9 @@ public final class URL implements java.io.Serializable {
     /*
      * Checks for permission to specify a stream handler.
      */
-    private void checkSpecifyHandler(SecurityManager sm) {
-        sm.checkPermission(SecurityConstants.SPECIFY_HANDLER_PERMISSION);
-    }
+    // private void checkSpecifyHandler(SecurityManager sm) {
+    //     // sm.checkPermission(SecurityConstants.SPECIFY_HANDLER_PERMISSION);
+    // }
 
     /**
      * Sets the fields of the URL. This is not a public method so that
@@ -670,7 +670,7 @@ public final class URL implements java.io.Serializable {
             /* This is very important. We must recompute this after the
              * URL has been changed. */
             hashCode = -1;
-            hostAddress = null;
+            // hostAddress = null;
             int q = file.lastIndexOf('?');
             if (q != -1) {
                 query = file.substring(q+1);
@@ -709,7 +709,7 @@ public final class URL implements java.io.Serializable {
             /* This is very important. We must recompute this after the
              * URL has been changed. */
             hashCode = -1;
-            hostAddress = null;
+            // hostAddress = null;
             this.query = query;
             this.authority = authority;
         }
@@ -992,25 +992,25 @@ public final class URL implements java.io.Serializable {
      *             java.net.Proxy)
      * @since      1.5
      */
-    public URLConnection openConnection(Proxy proxy)
-        throws java.io.IOException {
-        if (proxy == null) {
-            throw new IllegalArgumentException("proxy can not be null");
-        }
+    // public URLConnection openConnection(Proxy proxy)
+    //     throws java.io.IOException {
+    //     if (proxy == null) {
+    //         throw new IllegalArgumentException("proxy can not be null");
+    //     }
 
-        // Create a copy of Proxy as a security measure
-        Proxy p = proxy == Proxy.NO_PROXY ? Proxy.NO_PROXY : sun.net.ApplicationProxy.create(proxy);
-        SecurityManager sm = System.getSecurityManager();
-        if (p.type() != Proxy.Type.DIRECT && sm != null) {
-            InetSocketAddress epoint = (InetSocketAddress) p.address();
-            if (epoint.isUnresolved())
-                sm.checkConnect(epoint.getHostName(), epoint.getPort());
-            else
-                sm.checkConnect(epoint.getAddress().getHostAddress(),
-                                epoint.getPort());
-        }
-        return handler.openConnection(this, p);
-    }
+    //     // Create a copy of Proxy as a security measure
+    //     Proxy p = proxy == Proxy.NO_PROXY ? Proxy.NO_PROXY : sun.net.ApplicationProxy.create(proxy);
+    //     // SecurityManager sm = System.getSecurityManager();
+    //     // if (p.type() != Proxy.Type.DIRECT && sm != null) {
+    //     //     InetSocketAddress epoint = (InetSocketAddress) p.address();
+    //     //     if (epoint.isUnresolved())
+    //     //         sm.checkConnect(epoint.getHostName(), epoint.getPort());
+    //     //     else
+    //     //         sm.checkConnect(epoint.getAddress().getHostAddress(),
+    //     //                         epoint.getPort());
+    //     // }
+    //     return handler.openConnection(this, p);
+    // }
 
     /**
      * Opens a connection to this <code>URL</code> and returns an
@@ -1040,7 +1040,8 @@ public final class URL implements java.io.Serializable {
      * @see        java.net.URLConnection#getContent()
      */
     public final Object getContent() throws java.io.IOException {
-        return openConnection().getContent();
+        // return openConnection().getContent();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -1059,7 +1060,8 @@ public final class URL implements java.io.Serializable {
      */
     public final Object getContent(Class[] classes)
     throws java.io.IOException {
-        return openConnection().getContent(classes);
+        // return openConnection().getContent(classes);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -1095,10 +1097,10 @@ public final class URL implements java.io.Serializable {
             if (factory != null) {
                 throw new Error("factory already defined");
             }
-            SecurityManager security = System.getSecurityManager();
-            if (security != null) {
-                security.checkSetFactory();
-            }
+            // SecurityManager security = System.getSecurityManager();
+            // if (security != null) {
+            //     security.checkSetFactory();
+            // }
             handlers.clear();
             factory = fac;
         }

@@ -34,8 +34,8 @@ import java.security.Provider;
 import java.security.Security;
 import java.util.Collection;
 
-import sun.security.jca.*;
-import sun.security.jca.GetInstance.Instance;
+// import sun.security.jca.*;
+// import sun.security.jca.GetInstance.Instance;
 
 /**
  * A class for retrieving <code>Certificate</code>s and <code>CRL</code>s
@@ -214,14 +214,15 @@ public class CertStore {
     public static CertStore getInstance(String type, CertStoreParameters params)
             throws InvalidAlgorithmParameterException,
             NoSuchAlgorithmException {
-        try {
-            Instance instance = GetInstance.getInstance("CertStore",
-                CertStoreSpi.class, type, params);
-            return new CertStore((CertStoreSpi)instance.impl,
-                instance.provider, type, params);
-        } catch (NoSuchAlgorithmException e) {
-            return handleException(e);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     Instance instance = GetInstance.getInstance("CertStore",
+        //         CertStoreSpi.class, type, params);
+        //     return new CertStore((CertStoreSpi)instance.impl,
+        //         instance.provider, type, params);
+        // } catch (NoSuchAlgorithmException e) {
+        //     return handleException(e);
+        // }
     }
 
     private static CertStore handleException(NoSuchAlgorithmException e)
@@ -284,14 +285,15 @@ public class CertStore {
             CertStoreParameters params, String provider)
             throws InvalidAlgorithmParameterException,
             NoSuchAlgorithmException, NoSuchProviderException {
-        try {
-            Instance instance = GetInstance.getInstance("CertStore",
-                CertStoreSpi.class, type, params, provider);
-            return new CertStore((CertStoreSpi)instance.impl,
-                instance.provider, type, params);
-        } catch (NoSuchAlgorithmException e) {
-            return handleException(e);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     Instance instance = GetInstance.getInstance("CertStore",
+        //         CertStoreSpi.class, type, params, provider);
+        //     return new CertStore((CertStoreSpi)instance.impl,
+        //         instance.provider, type, params);
+        // } catch (NoSuchAlgorithmException e) {
+        //     return handleException(e);
+        // }
     }
 
     /**
@@ -338,14 +340,15 @@ public class CertStore {
     public static CertStore getInstance(String type, CertStoreParameters params,
             Provider provider) throws NoSuchAlgorithmException,
             InvalidAlgorithmParameterException {
-        try {
-            Instance instance = GetInstance.getInstance("CertStore",
-                CertStoreSpi.class, type, params, provider);
-            return new CertStore((CertStoreSpi)instance.impl,
-                instance.provider, type, params);
-        } catch (NoSuchAlgorithmException e) {
-            return handleException(e);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     Instance instance = GetInstance.getInstance("CertStore",
+        //         CertStoreSpi.class, type, params, provider);
+        //     return new CertStore((CertStoreSpi)instance.impl,
+        //         instance.provider, type, params);
+        // } catch (NoSuchAlgorithmException e) {
+        //     return handleException(e);
+        // }
     }
 
     /**

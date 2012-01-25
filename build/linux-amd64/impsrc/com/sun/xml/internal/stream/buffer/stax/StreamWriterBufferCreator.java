@@ -29,7 +29,7 @@ import com.sun.xml.internal.org.jvnet.staxex.Base64Data;
 import com.sun.xml.internal.org.jvnet.staxex.NamespaceContextEx;
 import com.sun.xml.internal.org.jvnet.staxex.XMLStreamWriterEx;
 
-import javax.activation.DataHandler;
+// import javax.activation.DataHandler;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -257,12 +257,12 @@ public class StreamWriterBufferCreator extends StreamBufferCreator implements XM
         storeContentObject(d);
     }
 
-    public void writeBinary(DataHandler dataHandler) throws XMLStreamException {
-        Base64Data d = new Base64Data();
-        d.set(dataHandler);
-        storeStructure(T_TEXT_AS_OBJECT);
-        storeContentObject(d);
-    }
+    // public void writeBinary(DataHandler dataHandler) throws XMLStreamException {
+    //     Base64Data d = new Base64Data();
+    //     d.set(dataHandler);
+    //     storeStructure(T_TEXT_AS_OBJECT);
+    //     storeContentObject(d);
+    // }
 
     public OutputStream writeBinary(String endpointURL) throws XMLStreamException {
         // TODO

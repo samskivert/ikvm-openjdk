@@ -35,7 +35,7 @@ import sun.security.util.PropertyExpander;
 
 import java.security.Provider.Service;
 
-import sun.security.jca.*;
+// import sun.security.jca.*;
 
 /**
  * <p>This class centralizes all security properties and common security
@@ -224,33 +224,33 @@ public final class Security {
     private static ProviderProperty getProviderProperty(String key) {
         ProviderProperty entry = null;
 
-        List<Provider> providers = Providers.getProviderList().providers();
-        for (int i = 0; i < providers.size(); i++) {
+        // List<Provider> providers = Providers.getProviderList().providers();
+        // for (int i = 0; i < providers.size(); i++) {
 
-            String matchKey = null;
-            Provider prov = providers.get(i);
-            String prop = prov.getProperty(key);
+        //     String matchKey = null;
+        //     Provider prov = providers.get(i);
+        //     String prop = prov.getProperty(key);
 
-            if (prop == null) {
-                // Is there a match if we do a case-insensitive property name
-                // comparison? Let's try ...
-                for (Enumeration<Object> e = prov.keys();
-                                e.hasMoreElements() && prop == null; ) {
-                    matchKey = (String)e.nextElement();
-                    if (key.equalsIgnoreCase(matchKey)) {
-                        prop = prov.getProperty(matchKey);
-                        break;
-                    }
-                }
-            }
+        //     if (prop == null) {
+        //         // Is there a match if we do a case-insensitive property name
+        //         // comparison? Let's try ...
+        //         for (Enumeration<Object> e = prov.keys();
+        //                         e.hasMoreElements() && prop == null; ) {
+        //             matchKey = (String)e.nextElement();
+        //             if (key.equalsIgnoreCase(matchKey)) {
+        //                 prop = prov.getProperty(matchKey);
+        //                 break;
+        //             }
+        //         }
+        //     }
 
-            if (prop != null) {
-                ProviderProperty newEntry = new ProviderProperty();
-                newEntry.className = prop;
-                newEntry.provider = prov;
-                return newEntry;
-            }
-        }
+        //     if (prop != null) {
+        //         ProviderProperty newEntry = new ProviderProperty();
+        //         newEntry.className = prop;
+        //         newEntry.provider = prov;
+        //         return newEntry;
+        //     }
+        // }
 
         return entry;
     }
@@ -356,15 +356,15 @@ public final class Security {
      */
     public static synchronized int insertProviderAt(Provider provider,
             int position) {
-        String providerName = provider.getName();
-        check("insertProvider." + providerName);
-        ProviderList list = Providers.getFullProviderList();
-        ProviderList newList = ProviderList.insertAt(list, provider, position - 1);
-        if (list == newList) {
+        // String providerName = provider.getName();
+        // check("insertProvider." + providerName);
+        // ProviderList list = Providers.getFullProviderList();
+        // ProviderList newList = ProviderList.insertAt(list, provider, position - 1);
+        // if (list == newList) {
             return -1;
-        }
-        Providers.setProviderList(newList);
-        return newList.getIndex(providerName) + 1;
+        // }
+        // Providers.setProviderList(newList);
+        // return newList.getIndex(providerName) + 1;
     }
 
     /**
@@ -441,10 +441,10 @@ public final class Security {
      * @see #addProvider
      */
     public static synchronized void removeProvider(String name) {
-        check("removeProvider." + name);
-        ProviderList list = Providers.getFullProviderList();
-        ProviderList newList = ProviderList.remove(list, name);
-        Providers.setProviderList(newList);
+        // check("removeProvider." + name);
+        // ProviderList list = Providers.getFullProviderList();
+        // ProviderList newList = ProviderList.remove(list, name);
+        // Providers.setProviderList(newList);
     }
 
     /**
@@ -454,7 +454,8 @@ public final class Security {
      * @return an array of all the installed providers.
      */
     public static Provider[] getProviders() {
-        return Providers.getFullProviderList().toArray();
+        // return Providers.getFullProviderList().toArray();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -470,7 +471,8 @@ public final class Security {
      * @see #addProvider
      */
     public static Provider getProvider(String name) {
-        return Providers.getProviderList().getProvider(name);
+        // return Providers.getProviderList().getProvider(name);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -692,25 +694,27 @@ public final class Security {
      */
     static Object[] getImpl(String algorithm, String type, String provider)
             throws NoSuchAlgorithmException, NoSuchProviderException {
-        if (provider == null) {
-            return GetInstance.getInstance
-                (type, getSpiClass(type), algorithm).toArray();
-        } else {
-            return GetInstance.getInstance
-                (type, getSpiClass(type), algorithm, provider).toArray();
-        }
+        // if (provider == null) {
+        //     return GetInstance.getInstance
+        //         (type, getSpiClass(type), algorithm).toArray();
+        // } else {
+        //     return GetInstance.getInstance
+        //         (type, getSpiClass(type), algorithm, provider).toArray();
+        // }
+        throw new UnsupportedOperationException();
     }
 
     static Object[] getImpl(String algorithm, String type, String provider,
             Object params) throws NoSuchAlgorithmException,
             NoSuchProviderException, InvalidAlgorithmParameterException {
-        if (provider == null) {
-            return GetInstance.getInstance
-                (type, getSpiClass(type), algorithm, params).toArray();
-        } else {
-            return GetInstance.getInstance
-                (type, getSpiClass(type), algorithm, params, provider).toArray();
-        }
+        // if (provider == null) {
+        //     return GetInstance.getInstance
+        //         (type, getSpiClass(type), algorithm, params).toArray();
+        // } else {
+        //     return GetInstance.getInstance
+        //         (type, getSpiClass(type), algorithm, params, provider).toArray();
+        // }
+        throw new UnsupportedOperationException();
     }
 
     /*
@@ -722,15 +726,17 @@ public final class Security {
      */
     static Object[] getImpl(String algorithm, String type, Provider provider)
             throws NoSuchAlgorithmException {
-        return GetInstance.getInstance
-            (type, getSpiClass(type), algorithm, provider).toArray();
+        // return GetInstance.getInstance
+        //     (type, getSpiClass(type), algorithm, provider).toArray();
+        throw new UnsupportedOperationException();
     }
 
     static Object[] getImpl(String algorithm, String type, Provider provider,
             Object params) throws NoSuchAlgorithmException,
             InvalidAlgorithmParameterException {
-        return GetInstance.getInstance
-            (type, getSpiClass(type), algorithm, params, provider).toArray();
+        // return GetInstance.getInstance
+        //     (type, getSpiClass(type), algorithm, params, provider).toArray();
+        throw new UnsupportedOperationException();
     }
 
     /**

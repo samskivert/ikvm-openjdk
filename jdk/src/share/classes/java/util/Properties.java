@@ -866,7 +866,7 @@ class Properties extends Hashtable<Object,Object> {
     {
         if (in == null)
             throw new NullPointerException();
-        XMLUtils.load(this, in);
+        // XMLUtils.load(this, in);
         in.close();
     }
 
@@ -931,7 +931,7 @@ class Properties extends Hashtable<Object,Object> {
     {
         if (os == null)
             throw new NullPointerException();
-        XMLUtils.save(this, os, comment, encoding);
+        // XMLUtils.save(this, os, comment, encoding);
     }
 
     /**

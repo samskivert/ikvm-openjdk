@@ -37,7 +37,7 @@ import java.util.PropertyPermission;
 import java.util.StringTokenizer;
 import java.util.Vector;
 import java.util.WeakHashMap;
-import sun.security.jca.GetInstance;
+// import sun.security.jca.GetInstance;
 import sun.security.util.Debug;
 import sun.security.util.SecurityConstants;
 
@@ -186,45 +186,45 @@ public abstract class Policy {
                  */
 
                 // install the bootstrap provider to avoid recursion
-                policy = new sun.security.provider.PolicyFile();
+                // policy = new sun.security.provider.PolicyFile();
 
-                final String pc = policy_class;
-                Policy p = AccessController.doPrivileged(
-                    new PrivilegedAction<Policy>() {
-                        public Policy run() {
-                            try {
-                                ClassLoader cl =
-                                        ClassLoader.getSystemClassLoader();
-                                // we want the extension loader
-                                ClassLoader extcl = null;
-                                while (cl != null) {
-                                    extcl = cl;
-                                    cl = cl.getParent();
-                                }
-                                return (extcl != null ? (Policy)Class.forName(
-                                        pc, true, extcl).newInstance() : null);
-                            } catch (Exception e) {
-                                if (debug != null) {
-                                    debug.println("policy provider " +
-                                                pc +
-                                                " not available");
-                                    e.printStackTrace();
-                                }
-                                return null;
-                            }
-                        }
-                    });
-                /*
-                 * if it loaded install it as the policy provider. Otherwise
-                 * continue to use the system default implementation
-                 */
-                if (p != null) {
-                    policy = p;
-                } else {
-                    if (debug != null) {
-                        debug.println("using sun.security.provider.PolicyFile");
-                    }
-                }
+                // final String pc = policy_class;
+                // Policy p = AccessController.doPrivileged(
+                //     new PrivilegedAction<Policy>() {
+                //         public Policy run() {
+                //             try {
+                //                 ClassLoader cl =
+                //                         ClassLoader.getSystemClassLoader();
+                //                 // we want the extension loader
+                //                 ClassLoader extcl = null;
+                //                 while (cl != null) {
+                //                     extcl = cl;
+                //                     cl = cl.getParent();
+                //                 }
+                //                 return (extcl != null ? (Policy)Class.forName(
+                //                         pc, true, extcl).newInstance() : null);
+                //             } catch (Exception e) {
+                //                 if (debug != null) {
+                //                     debug.println("policy provider " +
+                //                                 pc +
+                //                                 " not available");
+                //                     e.printStackTrace();
+                //                 }
+                //                 return null;
+                //             }
+                //         }
+                //     });
+                // /*
+                //  * if it loaded install it as the policy provider. Otherwise
+                //  * continue to use the system default implementation
+                //  */
+                // if (p != null) {
+                //     policy = p;
+                // } else {
+                //     if (debug != null) {
+                //         debug.println("using sun.security.provider.PolicyFile");
+                //     }
+                // }
             }
         }
         return policy;
@@ -367,18 +367,19 @@ public abstract class Policy {
                 throws NoSuchAlgorithmException {
 
         checkPermission(type);
-        try {
-            GetInstance.Instance instance = GetInstance.getInstance("Policy",
-                                                        PolicySpi.class,
-                                                        type,
-                                                        params);
-            return new PolicyDelegate((PolicySpi)instance.impl,
-                                                        instance.provider,
-                                                        type,
-                                                        params);
-        } catch (NoSuchAlgorithmException nsae) {
-            return handleException(nsae);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     GetInstance.Instance instance = GetInstance.getInstance("Policy",
+        //                                                 PolicySpi.class,
+        //                                                 type,
+        //                                                 params);
+        //     return new PolicyDelegate((PolicySpi)instance.impl,
+        //                                                 instance.provider,
+        //                                                 type,
+        //                                                 params);
+        // } catch (NoSuchAlgorithmException nsae) {
+        //     return handleException(nsae);
+        // }
     }
 
     /**
@@ -432,19 +433,20 @@ public abstract class Policy {
         }
 
         checkPermission(type);
-        try {
-            GetInstance.Instance instance = GetInstance.getInstance("Policy",
-                                                        PolicySpi.class,
-                                                        type,
-                                                        params,
-                                                        provider);
-            return new PolicyDelegate((PolicySpi)instance.impl,
-                                                        instance.provider,
-                                                        type,
-                                                        params);
-        } catch (NoSuchAlgorithmException nsae) {
-            return handleException (nsae);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     GetInstance.Instance instance = GetInstance.getInstance("Policy",
+        //                                                 PolicySpi.class,
+        //                                                 type,
+        //                                                 params,
+        //                                                 provider);
+        //     return new PolicyDelegate((PolicySpi)instance.impl,
+        //                                                 instance.provider,
+        //                                                 type,
+        //                                                 params);
+        // } catch (NoSuchAlgorithmException nsae) {
+        //     return handleException (nsae);
+        // }
     }
 
     /**
@@ -491,19 +493,20 @@ public abstract class Policy {
         }
 
         checkPermission(type);
-        try {
-            GetInstance.Instance instance = GetInstance.getInstance("Policy",
-                                                        PolicySpi.class,
-                                                        type,
-                                                        params,
-                                                        provider);
-            return new PolicyDelegate((PolicySpi)instance.impl,
-                                                        instance.provider,
-                                                        type,
-                                                        params);
-        } catch (NoSuchAlgorithmException nsae) {
-            return handleException (nsae);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     GetInstance.Instance instance = GetInstance.getInstance("Policy",
+        //                                                 PolicySpi.class,
+        //                                                 type,
+        //                                                 params,
+        //                                                 provider);
+        //     return new PolicyDelegate((PolicySpi)instance.impl,
+        //                                                 instance.provider,
+        //                                                 type,
+        //                                                 params);
+        // } catch (NoSuchAlgorithmException nsae) {
+        //     return handleException (nsae);
+        // }
     }
 
     private static Policy handleException(NoSuchAlgorithmException nsae)

@@ -33,7 +33,7 @@ import java.util.jar.*;
 
 import sun.misc.BASE64Decoder;
 
-import sun.security.jca.Providers;
+// import sun.security.jca.Providers;
 
 /**
  * This class is used to verify each entry in a jar file with its
@@ -44,7 +44,7 @@ public class ManifestEntryVerifier {
 
     private static final Debug debug = Debug.getInstance("jar");
 
-    private static final Provider digestProvider = Providers.getSunProvider();
+    private static final Provider digestProvider = null; // Providers.getSunProvider();
 
     /** the created digest objects */
     HashMap<String, MessageDigest> createdDigests;
@@ -126,8 +126,7 @@ public class ManifestEntryVerifier {
                 if (digest == null) {
                     try {
 
-                        digest = MessageDigest.getInstance
-                                        (algorithm, digestProvider);
+                        digest = MessageDigest.getInstance(algorithm, digestProvider);
                         createdDigests.put(algorithm, digest);
                     } catch (NoSuchAlgorithmException nsae) {
                         // ignore

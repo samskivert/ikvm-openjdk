@@ -27,7 +27,7 @@ package java.security;
 
 
 import java.net.URL;
-import java.net.SocketPermission;
+// import java.net.SocketPermission;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Hashtable;
@@ -67,10 +67,10 @@ public class CodeSource implements java.io.Serializable {
     private transient java.security.cert.Certificate certs[] = null;
 
     // cached SocketPermission used for matchLocation
-    private transient SocketPermission sp;
+    // private transient SocketPermission sp;
 
     // for generating cert paths
-    private transient CertificateFactory factory = null;
+    // private transient CertificateFactory factory = null;
 
     /**
      * Constructs a CodeSource and associates it with the specified
@@ -395,15 +395,15 @@ public class CodeSource implements java.io.Serializable {
                     if (thatHost == null) {
                         return false;
                     }
-                    if (this.sp == null) {
-                        this.sp = new SocketPermission(thisHost, "resolve");
-                    }
-                    if (that.sp == null) {
-                        that.sp = new SocketPermission(thatHost, "resolve");
-                    }
-                    if (!this.sp.implies(that.sp)) {
-                        return false;
-                    }
+                    // if (this.sp == null) {
+                    //     this.sp = new SocketPermission(thisHost, "resolve");
+                    // }
+                    // if (that.sp == null) {
+                    //     that.sp = new SocketPermission(thatHost, "resolve");
+                    // }
+                    // if (!this.sp.implies(that.sp)) {
+                    //     return false;
+                    // }
                 }
             }
 
@@ -598,11 +598,11 @@ public class CodeSource implements java.io.Serializable {
             return null;
         }
 
-        try {
-            // Initialize certificate factory
-            if (factory == null) {
-                factory = CertificateFactory.getInstance("X.509");
-            }
+        // try {
+            // // Initialize certificate factory
+            // if (factory == null) {
+            //     factory = CertificateFactory.getInstance("X.509");
+            // }
 
             // Iterate through all the certificates
             int i = 0;
@@ -622,8 +622,8 @@ public class CodeSource implements java.io.Serializable {
                     j++;
                 }
                 i = j;
-                CertPath certPath = factory.generateCertPath(certChain);
-                signers.add(new CodeSigner(certPath, null));
+                // CertPath certPath = factory.generateCertPath(certChain);
+                // signers.add(new CodeSigner(certPath, null));
             }
 
             if (signers.isEmpty()) {
@@ -632,8 +632,8 @@ public class CodeSource implements java.io.Serializable {
                 return signers.toArray(new CodeSigner[signers.size()]);
             }
 
-        } catch (CertificateException e) {
-            return null; //TODO - may be better to throw an ex. here
-        }
+        // } catch (CertificateException e) {
+        //     return null; //TODO - may be better to throw an ex. here
+        // }
     }
 }

@@ -29,8 +29,8 @@ import java.util.*;
 
 import java.security.Provider.Service;
 
-import sun.security.jca.*;
-import sun.security.jca.GetInstance.Instance;
+// import sun.security.jca.*;
+// import sun.security.jca.GetInstance.Instance;
 
 /**
  * This class provides a cryptographically strong random number
@@ -183,8 +183,8 @@ public class SecureRandom extends java.util.Random {
         if (prng == null) {
             // bummer, get the SUN implementation
             prng = "SHA1PRNG";
-            this.secureRandomSpi = new sun.security.provider.SecureRandom();
-            this.provider = Providers.getSunProvider();
+            this.secureRandomSpi = null; // new sun.security.provider.SecureRandom();
+            this.provider = null; // Providers.getSunProvider();
             if (setSeed) {
                 this.secureRandomSpi.engineSetSeed(seed);
             }
@@ -268,10 +268,11 @@ public class SecureRandom extends java.util.Random {
      */
     public static SecureRandom getInstance(String algorithm)
             throws NoSuchAlgorithmException {
-        Instance instance = GetInstance.getInstance("SecureRandom",
-            SecureRandomSpi.class, algorithm);
-        return new SecureRandom((SecureRandomSpi)instance.impl,
-            instance.provider, algorithm);
+        // Instance instance = GetInstance.getInstance("SecureRandom",
+        //     SecureRandomSpi.class, algorithm);
+        // return new SecureRandom((SecureRandomSpi)instance.impl,
+        //     instance.provider, algorithm);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -319,10 +320,11 @@ public class SecureRandom extends java.util.Random {
      */
     public static SecureRandom getInstance(String algorithm, String provider)
             throws NoSuchAlgorithmException, NoSuchProviderException {
-        Instance instance = GetInstance.getInstance("SecureRandom",
-            SecureRandomSpi.class, algorithm, provider);
-        return new SecureRandom((SecureRandomSpi)instance.impl,
-            instance.provider, algorithm);
+        // Instance instance = GetInstance.getInstance("SecureRandom",
+        //     SecureRandomSpi.class, algorithm, provider);
+        // return new SecureRandom((SecureRandomSpi)instance.impl,
+        //     instance.provider, algorithm);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -363,10 +365,11 @@ public class SecureRandom extends java.util.Random {
      */
     public static SecureRandom getInstance(String algorithm,
             Provider provider) throws NoSuchAlgorithmException {
-        Instance instance = GetInstance.getInstance("SecureRandom",
-            SecureRandomSpi.class, algorithm, provider);
-        return new SecureRandom((SecureRandomSpi)instance.impl,
-            instance.provider, algorithm);
+        // Instance instance = GetInstance.getInstance("SecureRandom",
+        //     SecureRandomSpi.class, algorithm, provider);
+        // return new SecureRandom((SecureRandomSpi)instance.impl,
+        //     instance.provider, algorithm);
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -534,13 +537,13 @@ public class SecureRandom extends java.util.Random {
      * registered providers supplies a SecureRandom implementation.
      */
     private static String getPrngAlgorithm() {
-        for (Provider p : Providers.getProviderList().providers()) {
-            for (Service s : p.getServices()) {
-                if (s.getType().equals("SecureRandom")) {
-                    return s.getAlgorithm();
-                }
-            }
-        }
+        // for (Provider p : Providers.getProviderList().providers()) {
+        //     for (Service s : p.getServices()) {
+        //         if (s.getType().equals("SecureRandom")) {
+        //             return s.getAlgorithm();
+        //         }
+        //     }
+        // }
         return null;
     }
 

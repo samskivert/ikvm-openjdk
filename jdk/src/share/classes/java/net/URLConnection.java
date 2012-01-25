@@ -37,7 +37,7 @@ import java.util.List;
 import java.security.Permission;
 import java.security.AccessController;
 import sun.security.util.SecurityConstants;
-import sun.net.www.MessageHeader;
+// import sun.net.www.MessageHeader;
 
 /**
  * The abstract class <code>URLConnection</code> is the superclass
@@ -289,63 +289,63 @@ public abstract class URLConnection {
     /**
      * @since 1.6
      */
-    private MessageHeader requests;
+    // private MessageHeader requests;
 
-   /**
-    * @since   JDK1.1
-    */
-    private static FileNameMap fileNameMap;
+   // /**
+   //  * @since   JDK1.1
+   //  */
+   //  private static FileNameMap fileNameMap;
 
-    /**
-     * @since 1.2.2
-     */
-    private static boolean fileNameMapLoaded = false;
+   //  /**
+   //   * @since 1.2.2
+   //   */
+   //  private static boolean fileNameMapLoaded = false;
 
-    /**
-     * Loads filename map (a mimetable) from a data file. It will
-     * first try to load the user-specific table, defined
-     * by &quot;content.types.user.table&quot; property. If that fails,
-     * it tries to load the default built-in table at
-     * lib/content-types.properties under java home.
-     *
-     * @return the FileNameMap
-     * @since 1.2
-     * @see #setFileNameMap(java.net.FileNameMap)
-     */
-    public static synchronized FileNameMap getFileNameMap() {
-        if ((fileNameMap == null) && !fileNameMapLoaded) {
-            fileNameMap = sun.net.www.MimeTable.loadTable();
-            fileNameMapLoaded = true;
-        }
+   //  /**
+   //   * Loads filename map (a mimetable) from a data file. It will
+   //   * first try to load the user-specific table, defined
+   //   * by &quot;content.types.user.table&quot; property. If that fails,
+   //   * it tries to load the default built-in table at
+   //   * lib/content-types.properties under java home.
+   //   *
+   //   * @return the FileNameMap
+   //   * @since 1.2
+   //   * @see #setFileNameMap(java.net.FileNameMap)
+   //   */
+   //  public static synchronized FileNameMap getFileNameMap() {
+   //      if ((fileNameMap == null) && !fileNameMapLoaded) {
+   //          fileNameMap = sun.net.www.MimeTable.loadTable();
+   //          fileNameMapLoaded = true;
+   //      }
 
-        return new FileNameMap() {
-            private FileNameMap map = fileNameMap;
-            public String getContentTypeFor(String fileName) {
-                return map.getContentTypeFor(fileName);
-            }
-        };
-    }
+   //      return new FileNameMap() {
+   //          private FileNameMap map = fileNameMap;
+   //          public String getContentTypeFor(String fileName) {
+   //              return map.getContentTypeFor(fileName);
+   //          }
+   //      };
+   //  }
 
-    /**
-     * Sets the FileNameMap.
-     * <p>
-     * If there is a security manager, this method first calls
-     * the security manager's <code>checkSetFactory</code> method
-     * to ensure the operation is allowed.
-     * This could result in a SecurityException.
-     *
-     * @param map the FileNameMap to be set
-     * @exception  SecurityException  if a security manager exists and its
-     *             <code>checkSetFactory</code> method doesn't allow the operation.
-     * @see        SecurityManager#checkSetFactory
-     * @see #getFileNameMap()
-     * @since 1.2
-     */
-    public static void setFileNameMap(FileNameMap map) {
-        SecurityManager sm = System.getSecurityManager();
-        if (sm != null) sm.checkSetFactory();
-        fileNameMap = map;
-    }
+    // /**
+    //  * Sets the FileNameMap.
+    //  * <p>
+    //  * If there is a security manager, this method first calls
+    //  * the security manager's <code>checkSetFactory</code> method
+    //  * to ensure the operation is allowed.
+    //  * This could result in a SecurityException.
+    //  *
+    //  * @param map the FileNameMap to be set
+    //  * @exception  SecurityException  if a security manager exists and its
+    //  *             <code>checkSetFactory</code> method doesn't allow the operation.
+    //  * @see        SecurityManager#checkSetFactory
+    //  * @see #getFileNameMap()
+    //  * @since 1.2
+    //  */
+    // public static void setFileNameMap(FileNameMap map) {
+    //     SecurityManager sm = System.getSecurityManager();
+    //     if (sm != null) sm.checkSetFactory();
+    //     fileNameMap = map;
+    // }
 
     /**
      * Opens a communications link to the resource referenced by this
@@ -698,13 +698,13 @@ public abstract class URLConnection {
      * @see        java.net.URLConnection#getContentType()
      * @see        java.net.URLConnection#setContentHandlerFactory(java.net.ContentHandlerFactory)
      */
-    public Object getContent() throws IOException {
-        // Must call getInputStream before GetHeaderField gets called
-        // so that FileNotFoundException has a chance to be thrown up
-        // from here without being caught.
-        getInputStream();
-        return getContentHandler().getContent(this);
-    }
+    // public Object getContent() throws IOException {
+    //     // Must call getInputStream before GetHeaderField gets called
+    //     // so that FileNotFoundException has a chance to be thrown up
+    //     // from here without being caught.
+    //     getInputStream();
+    //     return getContentHandler().getContent(this);
+    // }
 
     /**
      * Retrieves the contents of this URL connection.
@@ -726,13 +726,13 @@ public abstract class URLConnection {
      * @see        java.net.URLConnection#setContentHandlerFactory(java.net.ContentHandlerFactory)
      * @since 1.3
      */
-    public Object getContent(Class[] classes) throws IOException {
-        // Must call getInputStream before GetHeaderField gets called
-        // so that FileNotFoundException has a chance to be thrown up
-        // from here without being caught.
-        getInputStream();
-        return getContentHandler().getContent(this, classes);
-    }
+    // public Object getContent(Class[] classes) throws IOException {
+    //     // Must call getInputStream before GetHeaderField gets called
+    //     // so that FileNotFoundException has a chance to be thrown up
+    //     // from here without being caught.
+    //     getInputStream();
+    //     return getContentHandler().getContent(this, classes);
+    // }
 
     /**
      * Returns a permission object representing the permission
@@ -1041,10 +1041,10 @@ public abstract class URLConnection {
         if (key == null)
             throw new NullPointerException ("key is null");
 
-        if (requests == null)
-            requests = new MessageHeader();
+        // if (requests == null)
+        //     requests = new MessageHeader();
 
-        requests.set(key, value);
+        // requests.set(key, value);
     }
 
     /**
@@ -1066,10 +1066,10 @@ public abstract class URLConnection {
         if (key == null)
             throw new NullPointerException ("key is null");
 
-        if (requests == null)
-            requests = new MessageHeader();
+        // if (requests == null)
+        //     requests = new MessageHeader();
 
-        requests.add(key, value);
+        // requests.add(key, value);
     }
 
 
@@ -1087,10 +1087,10 @@ public abstract class URLConnection {
         if (connected)
             throw new IllegalStateException("Already connected");
 
-        if (requests == null)
+        // if (requests == null)
             return null;
 
-        return requests.findValue(key);
+        // return requests.findValue(key);
     }
 
     /**
@@ -1109,10 +1109,10 @@ public abstract class URLConnection {
         if (connected)
             throw new IllegalStateException("Already connected");
 
-        if (requests == null)
+        // if (requests == null)
             return Collections.EMPTY_MAP;
 
-        return requests.getHeaders(null);
+        // return requests.getHeaders(null);
     }
 
     /**
@@ -1160,7 +1160,7 @@ public abstract class URLConnection {
     /**
      * The ContentHandler factory.
      */
-    static ContentHandlerFactory factory;
+    // static ContentHandlerFactory factory;
 
     /**
      * Sets the <code>ContentHandlerFactory</code> of an
@@ -1182,51 +1182,51 @@ public abstract class URLConnection {
      * @see        java.net.URLConnection#getContent()
      * @see        SecurityManager#checkSetFactory
      */
-    public static synchronized void setContentHandlerFactory(ContentHandlerFactory fac) {
-        if (factory != null) {
-            throw new Error("factory already defined");
-        }
-        SecurityManager security = System.getSecurityManager();
-        if (security != null) {
-            security.checkSetFactory();
-        }
-        factory = fac;
-    }
+    // public static synchronized void setContentHandlerFactory(ContentHandlerFactory fac) {
+    //     if (factory != null) {
+    //         throw new Error("factory already defined");
+    //     }
+    //     SecurityManager security = System.getSecurityManager();
+    //     if (security != null) {
+    //         security.checkSetFactory();
+    //     }
+    //     factory = fac;
+    // }
 
-    private static Hashtable handlers = new Hashtable();
-    private static final ContentHandler UnknownContentHandlerP = new UnknownContentHandler();
+    // private static Hashtable handlers = new Hashtable();
+    // private static final ContentHandler UnknownContentHandlerP = new UnknownContentHandler();
 
     /**
      * Gets the Content Handler appropriate for this connection.
      * @param connection the connection to use.
      */
-    synchronized ContentHandler getContentHandler()
-    throws UnknownServiceException
-    {
-        String contentType = stripOffParameters(getContentType());
-        ContentHandler handler = null;
-        if (contentType == null)
-            throw new UnknownServiceException("no content-type");
-        try {
-            handler = (ContentHandler) handlers.get(contentType);
-            if (handler != null)
-                return handler;
-        } catch(Exception e) {
-        }
+    // synchronized ContentHandler getContentHandler()
+    // throws UnknownServiceException
+    // {
+    //     String contentType = stripOffParameters(getContentType());
+    //     ContentHandler handler = null;
+    //     if (contentType == null)
+    //         throw new UnknownServiceException("no content-type");
+    //     try {
+    //         handler = (ContentHandler) handlers.get(contentType);
+    //         if (handler != null)
+    //             return handler;
+    //     } catch(Exception e) {
+    //     }
 
-        if (factory != null)
-            handler = factory.createContentHandler(contentType);
-        if (handler == null) {
-            try {
-                handler = lookupContentHandlerClassFor(contentType);
-            } catch(Exception e) {
-                e.printStackTrace();
-                handler = UnknownContentHandlerP;
-            }
-            handlers.put(contentType, handler);
-        }
-        return handler;
-    }
+    //     // if (factory != null)
+    //     //     handler = factory.createContentHandler(contentType);
+    //     if (handler == null) {
+    //         try {
+    //             handler = lookupContentHandlerClassFor(contentType);
+    //         } catch(Exception e) {
+    //             e.printStackTrace();
+    //             handler = UnknownContentHandlerP;
+    //         }
+    //         handlers.put(contentType, handler);
+    //     }
+    //     return handler;
+    // }
 
     /*
      * Media types are in the format: type/subtype*(; parameter).
@@ -1260,40 +1260,40 @@ public abstract class URLConnection {
      *     YoyoDyne.experimental.text.plain
      * </pre>
      */
-    private ContentHandler lookupContentHandlerClassFor(String contentType)
-        throws InstantiationException, IllegalAccessException, ClassNotFoundException {
-        String contentHandlerClassName = typeToPackageName(contentType);
+    // private ContentHandler lookupContentHandlerClassFor(String contentType)
+    //     throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+    //     String contentHandlerClassName = typeToPackageName(contentType);
 
-        String contentHandlerPkgPrefixes =getContentHandlerPkgPrefixes();
+    //     String contentHandlerPkgPrefixes =getContentHandlerPkgPrefixes();
 
-        StringTokenizer packagePrefixIter =
-            new StringTokenizer(contentHandlerPkgPrefixes, "|");
+    //     StringTokenizer packagePrefixIter =
+    //         new StringTokenizer(contentHandlerPkgPrefixes, "|");
 
-        while (packagePrefixIter.hasMoreTokens()) {
-            String packagePrefix = packagePrefixIter.nextToken().trim();
+    //     while (packagePrefixIter.hasMoreTokens()) {
+    //         String packagePrefix = packagePrefixIter.nextToken().trim();
 
-            try {
-                String clsName = packagePrefix + "." + contentHandlerClassName;
-                Class cls = null;
-                try {
-                    cls = Class.forName(clsName);
-                } catch (ClassNotFoundException e) {
-                    ClassLoader cl = ClassLoader.getSystemClassLoader();
-                    if (cl != null) {
-                        cls = cl.loadClass(clsName);
-                    }
-                }
-                if (cls != null) {
-                    ContentHandler handler =
-                        (ContentHandler)cls.newInstance();
-                    return handler;
-                }
-            } catch(Exception e) {
-            }
-        }
+    //         try {
+    //             String clsName = packagePrefix + "." + contentHandlerClassName;
+    //             Class cls = null;
+    //             try {
+    //                 cls = Class.forName(clsName);
+    //             } catch (ClassNotFoundException e) {
+    //                 ClassLoader cl = ClassLoader.getSystemClassLoader();
+    //                 if (cl != null) {
+    //                     cls = cl.loadClass(clsName);
+    //                 }
+    //             }
+    //             if (cls != null) {
+    //                 ContentHandler handler =
+    //                     (ContentHandler)cls.newInstance();
+    //                 return handler;
+    //             }
+    //         } catch(Exception e) {
+    //         }
+    //     }
 
-        return UnknownContentHandlerP;
-    }
+    //     return UnknownContentHandlerP;
+    // }
 
     /**
      * Utility function to map a MIME content type into an equivalent
@@ -1327,16 +1327,16 @@ public abstract class URLConnection {
      * that property has been defined, the sun.net.www.content is always
      * the last one on the returned package list.
      */
-    private String getContentHandlerPkgPrefixes() {
-        String packagePrefixList = AccessController.doPrivileged(
-            new sun.security.action.GetPropertyAction(contentPathProp, ""));
+    // private String getContentHandlerPkgPrefixes() {
+    //     String packagePrefixList = AccessController.doPrivileged(
+    //         new sun.security.action.GetPropertyAction(contentPathProp, ""));
 
-        if (packagePrefixList != "") {
-            packagePrefixList += "|";
-        }
+    //     if (packagePrefixList != "") {
+    //         packagePrefixList += "|";
+    //     }
 
-        return packagePrefixList + contentClassPrefix;
-    }
+    //     return packagePrefixList + contentClassPrefix;
+    // }
 
     /**
      * Tries to determine the content type of an object, based
@@ -1349,9 +1349,9 @@ public abstract class URLConnection {
      *          based upon its file name.
      * @see     java.net.URLConnection#getContentType()
      */
-    public static String guessContentTypeFromName(String fname) {
-        return getFileNameMap().getContentTypeFor(fname);
-    }
+    // public static String guessContentTypeFromName(String fname) {
+    //     return getFileNameMap().getContentTypeFor(fname);
+    // }
 
     /**
      * Tries to determine the type of an input stream based on the
@@ -1717,8 +1717,8 @@ public abstract class URLConnection {
 }
 
 
-class UnknownContentHandler extends ContentHandler {
-    public Object getContent(URLConnection uc) throws IOException {
-        return uc.getInputStream();
-    }
-}
+// class UnknownContentHandler extends ContentHandler {
+//     public Object getContent(URLConnection uc) throws IOException {
+//         return uc.getInputStream();
+//     }
+// }

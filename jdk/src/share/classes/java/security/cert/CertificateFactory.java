@@ -36,8 +36,8 @@ import java.security.PrivilegedAction;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 
-import sun.security.jca.*;
-import sun.security.jca.GetInstance.Instance;
+// import sun.security.jca.*;
+// import sun.security.jca.GetInstance.Instance;
 
 /**
  * This class defines the functionality of a certificate factory, which is
@@ -161,14 +161,15 @@ public class CertificateFactory {
      */
     public static final CertificateFactory getInstance(String type)
             throws CertificateException {
-        try {
-            Instance instance = GetInstance.getInstance("CertificateFactory",
-                CertificateFactorySpi.class, type);
-            return new CertificateFactory((CertificateFactorySpi)instance.impl,
-                instance.provider, type);
-        } catch (NoSuchAlgorithmException e) {
-            throw new CertificateException(type + " not found", e);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     Instance instance = GetInstance.getInstance("CertificateFactory",
+        //         CertificateFactorySpi.class, type);
+        //     return new CertificateFactory((CertificateFactorySpi)instance.impl,
+        //         instance.provider, type);
+        // } catch (NoSuchAlgorithmException e) {
+        //     throw new CertificateException(type + " not found", e);
+        // }
     }
 
     /**
@@ -208,14 +209,15 @@ public class CertificateFactory {
     public static final CertificateFactory getInstance(String type,
             String provider) throws CertificateException,
             NoSuchProviderException {
-        try {
-            Instance instance = GetInstance.getInstance("CertificateFactory",
-                CertificateFactorySpi.class, type, provider);
-            return new CertificateFactory((CertificateFactorySpi)instance.impl,
-                instance.provider, type);
-        } catch (NoSuchAlgorithmException e) {
-            throw new CertificateException(type + " not found", e);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     Instance instance = GetInstance.getInstance("CertificateFactory",
+        //         CertificateFactorySpi.class, type, provider);
+        //     return new CertificateFactory((CertificateFactorySpi)instance.impl,
+        //         instance.provider, type);
+        // } catch (NoSuchAlgorithmException e) {
+        //     throw new CertificateException(type + " not found", e);
+        // }
     }
 
     /**
@@ -250,14 +252,15 @@ public class CertificateFactory {
      */
     public static final CertificateFactory getInstance(String type,
             Provider provider) throws CertificateException {
-        try {
-            Instance instance = GetInstance.getInstance("CertificateFactory",
-                CertificateFactorySpi.class, type, provider);
-            return new CertificateFactory((CertificateFactorySpi)instance.impl,
-                instance.provider, type);
-        } catch (NoSuchAlgorithmException e) {
-            throw new CertificateException(type + " not found", e);
-        }
+        throw new UnsupportedOperationException();
+        // try {
+        //     Instance instance = GetInstance.getInstance("CertificateFactory",
+        //         CertificateFactorySpi.class, type, provider);
+        //     return new CertificateFactory((CertificateFactorySpi)instance.impl,
+        //         instance.provider, type);
+        // } catch (NoSuchAlgorithmException e) {
+        //     throw new CertificateException(type + " not found", e);
+        // }
     }
 
     /**

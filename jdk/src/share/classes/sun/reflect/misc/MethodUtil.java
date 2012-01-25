@@ -36,7 +36,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.HttpURLConnection;
+// import java.net.HttpURLConnection;
 import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.AccessibleObject;
@@ -364,13 +364,13 @@ public final class MethodUtil extends SecureClassLoader {
      */
     private static byte[] getBytes(URL url) throws IOException {
         URLConnection uc = url.openConnection();
-        if (uc instanceof java.net.HttpURLConnection) {
-            java.net.HttpURLConnection huc = (java.net.HttpURLConnection) uc;
-            int code = huc.getResponseCode();
-            if (code >= java.net.HttpURLConnection.HTTP_BAD_REQUEST) {
-                throw new IOException("open HTTP connection failed.");
-            }
-        }
+        // if (uc instanceof java.net.HttpURLConnection) {
+        //     java.net.HttpURLConnection huc = (java.net.HttpURLConnection) uc;
+        //     int code = huc.getResponseCode();
+        //     if (code >= java.net.HttpURLConnection.HTTP_BAD_REQUEST) {
+        //         throw new IOException("open HTTP connection failed.");
+        //     }
+        // }
         int len = uc.getContentLength();
         InputStream in = new BufferedInputStream(uc.getInputStream());
 

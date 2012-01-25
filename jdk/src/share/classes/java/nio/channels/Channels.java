@@ -69,16 +69,16 @@ public final class Channels {
     private static int write(WritableByteChannel ch, ByteBuffer bb)
         throws IOException
     {
-        if (ch instanceof SelectableChannel) {
-            SelectableChannel sc = (SelectableChannel)ch;
-            synchronized (sc.blockingLock()) {
-                if (!sc.isBlocking())
-                    throw new IllegalBlockingModeException();
-                return ch.write(bb);
-            }
-        } else {
+        // if (ch instanceof SelectableChannel) {
+        //     SelectableChannel sc = (SelectableChannel)ch;
+        //     synchronized (sc.blockingLock()) {
+        //         if (!sc.isBlocking())
+        //             throw new IllegalBlockingModeException();
+        //         return ch.write(bb);
+        //     }
+        // } else {
             return ch.write(bb);
-        }
+        // }
     }
 
 

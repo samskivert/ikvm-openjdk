@@ -32,10 +32,10 @@ import java.io.FilePermission;
 import java.awt.AWTPermission;
 import java.util.PropertyPermission;
 import java.lang.RuntimePermission;
-import java.net.SocketPermission;
-import java.net.NetPermission;
+// import java.net.SocketPermission;
+// import java.net.NetPermission;
 import java.util.Hashtable;
-import java.net.InetAddress;
+// import java.net.InetAddress;
 import java.lang.reflect.Member;
 import java.lang.reflect.*;
 import java.net.URL;
@@ -1045,11 +1045,11 @@ class SecurityManager {
             host = "[" + host + "]";
         }
         if (port == -1) {
-            checkPermission(new SocketPermission(host,
-                SecurityConstants.SOCKET_RESOLVE_ACTION));
+            // checkPermission(new SocketPermission(host,
+            //     SecurityConstants.SOCKET_RESOLVE_ACTION));
         } else {
-            checkPermission(new SocketPermission(host+":"+port,
-                SecurityConstants.SOCKET_CONNECT_ACTION));
+            // checkPermission(new SocketPermission(host+":"+port,
+            //     SecurityConstants.SOCKET_CONNECT_ACTION));
         }
     }
 
@@ -1099,14 +1099,14 @@ class SecurityManager {
         if (!host.startsWith("[") && host.indexOf(':') != -1) {
             host = "[" + host + "]";
         }
-        if (port == -1)
-            checkPermission(new SocketPermission(host,
-                SecurityConstants.SOCKET_RESOLVE_ACTION),
-                context);
-        else
-            checkPermission(new SocketPermission(host+":"+port,
-                SecurityConstants.SOCKET_CONNECT_ACTION),
-                context);
+        // if (port == -1)
+        //     checkPermission(new SocketPermission(host,
+        //         SecurityConstants.SOCKET_RESOLVE_ACTION),
+        //         context);
+        // else
+        //     checkPermission(new SocketPermission(host+":"+port,
+        //         SecurityConstants.SOCKET_CONNECT_ACTION),
+        //         context);
     }
 
     /**
@@ -1131,12 +1131,12 @@ class SecurityManager {
      * @see        #checkPermission(java.security.Permission) checkPermission
      */
     public void checkListen(int port) {
-        if (port == 0) {
-            checkPermission(SecurityConstants.LOCAL_LISTEN_PERMISSION);
-        } else {
-            checkPermission(new SocketPermission("localhost:"+port,
-                SecurityConstants.SOCKET_LISTEN_ACTION));
-        }
+        // if (port == 0) {
+        //     checkPermission(SecurityConstants.LOCAL_LISTEN_PERMISSION);
+        // } else {
+        //     checkPermission(new SocketPermission("localhost:"+port,
+        //         SecurityConstants.SOCKET_LISTEN_ACTION));
+        // }
     }
 
     /**
@@ -1171,8 +1171,8 @@ class SecurityManager {
         if (!host.startsWith("[") && host.indexOf(':') != -1) {
             host = "[" + host + "]";
         }
-        checkPermission(new SocketPermission(host+":"+port,
-            SecurityConstants.SOCKET_ACCEPT_ACTION));
+        // checkPermission(new SocketPermission(host+":"+port,
+        //     SecurityConstants.SOCKET_ACCEPT_ACTION));
     }
 
     /**
@@ -1197,14 +1197,14 @@ class SecurityManager {
      * @since      JDK1.1
      * @see        #checkPermission(java.security.Permission) checkPermission
      */
-    public void checkMulticast(InetAddress maddr) {
-        String host = maddr.getHostAddress();
-        if (!host.startsWith("[") && host.indexOf(':') != -1) {
-            host = "[" + host + "]";
-        }
-        checkPermission(new SocketPermission(host,
-            SecurityConstants.SOCKET_CONNECT_ACCEPT_ACTION));
-    }
+    // public void checkMulticast(InetAddress maddr) {
+    //     String host = maddr.getHostAddress();
+    //     if (!host.startsWith("[") && host.indexOf(':') != -1) {
+    //         host = "[" + host + "]";
+    //     }
+    //     checkPermission(new SocketPermission(host,
+    //         SecurityConstants.SOCKET_CONNECT_ACCEPT_ACTION));
+    // }
 
     /**
      * Throws a <code>SecurityException</code> if the
@@ -1232,15 +1232,15 @@ class SecurityManager {
      * @deprecated Use #checkPermission(java.security.Permission) instead
      * @see        #checkPermission(java.security.Permission) checkPermission
      */
-    @Deprecated
-    public void checkMulticast(InetAddress maddr, byte ttl) {
-        String host = maddr.getHostAddress();
-        if (!host.startsWith("[") && host.indexOf(':') != -1) {
-            host = "[" + host + "]";
-        }
-        checkPermission(new SocketPermission(host,
-            SecurityConstants.SOCKET_CONNECT_ACCEPT_ACTION));
-    }
+    // @Deprecated
+    // public void checkMulticast(InetAddress maddr, byte ttl) {
+    //     String host = maddr.getHostAddress();
+    //     if (!host.startsWith("[") && host.indexOf(':') != -1) {
+    //         host = "[" + host + "]";
+    //     }
+    //     checkPermission(new SocketPermission(host,
+    //         SecurityConstants.SOCKET_CONNECT_ACCEPT_ACTION));
+    // }
 
     /**
      * Throws a <code>SecurityException</code> if the

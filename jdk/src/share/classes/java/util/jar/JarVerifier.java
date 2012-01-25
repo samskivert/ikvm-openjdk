@@ -33,7 +33,7 @@ import java.security.cert.CertificateException;
 
 import sun.security.util.ManifestDigester;
 import sun.security.util.ManifestEntryVerifier;
-import sun.security.util.SignatureFileVerifier;
+// import sun.security.util.SignatureFileVerifier;
 import sun.security.util.Debug;
 
 /**
@@ -128,12 +128,12 @@ class JarVerifier {
                     return;
                 }
 
-                if (SignatureFileVerifier.isBlockOrSF(uname)) {
-                    /* We parse only DSA or RSA PKCS7 blocks. */
-                    parsingBlockOrSF = true;
-                    baos.reset();
-                    mev.setEntry(null, je);
-                }
+                // if (SignatureFileVerifier.isBlockOrSF(uname)) {
+                //     /* We parse only DSA or RSA PKCS7 blocks. */
+                //     parsingBlockOrSF = true;
+                //     baos.reset();
+                //     mev.setEntry(null, je);
+                // }
                 return;
             }
         }
@@ -220,7 +220,7 @@ class JarVerifier {
             }
         } else {
 
-            try {
+            // try {
                 parsingBlockOrSF = false;
 
                 if (debug != null) {
@@ -239,17 +239,17 @@ class JarVerifier {
                     // anyone waiting for this .SF file
                     Iterator it = pendingBlocks.iterator();
                     while (it.hasNext()) {
-                        SignatureFileVerifier sfv =
-                            (SignatureFileVerifier) it.next();
-                        if (sfv.needSignatureFile(key)) {
-                            if (debug != null) {
-                                debug.println(
-                                 "processEntry: processing pending block");
-                            }
+                        // SignatureFileVerifier sfv =
+                        //     (SignatureFileVerifier) it.next();
+                        // if (sfv.needSignatureFile(key)) {
+                        //     // if (debug != null) {
+                        //     //     debug.println(
+                        //     //      "processEntry: processing pending block");
+                        //     // }
 
-                            sfv.setSignatureFile(bytes);
-                            sfv.process(sigFileSigners);
-                        }
+                        //     sfv.setSignatureFile(bytes);
+                        //     sfv.process(sigFileSigners);
+                        // }
                     }
                     return;
                 }
@@ -270,45 +270,45 @@ class JarVerifier {
                     }
                 }
 
-                SignatureFileVerifier sfv =
-                  new SignatureFileVerifier(signerCache,
-                                            manDig, uname, baos.toByteArray());
+                // SignatureFileVerifier sfv =
+                //   new SignatureFileVerifier(signerCache,
+                //                             manDig, uname, baos.toByteArray());
 
-                if (sfv.needSignatureFileBytes()) {
-                    // see if we have already parsed an external .SF file
-                    byte[] bytes = (byte[]) sigFileData.get(key);
+                // if (sfv.needSignatureFileBytes()) {
+                //     // see if we have already parsed an external .SF file
+                //     byte[] bytes = (byte[]) sigFileData.get(key);
 
-                    if (bytes == null) {
-                        // put this block on queue for later processing
-                        // since we don't have the .SF bytes yet
-                        // (uname, block);
-                        if (debug != null) {
-                            debug.println("adding pending block");
-                        }
-                        pendingBlocks.add(sfv);
-                        return;
-                    } else {
-                        sfv.setSignatureFile(bytes);
-                    }
-                }
-                sfv.process(sigFileSigners);
+                //     if (bytes == null) {
+                //         // put this block on queue for later processing
+                //         // since we don't have the .SF bytes yet
+                //         // (uname, block);
+                //         // if (debug != null) {
+                //         //     debug.println("adding pending block");
+                //         // }
+                //         pendingBlocks.add(sfv);
+                //         return;
+                //     } else {
+                //         sfv.setSignatureFile(bytes);
+                //     }
+                // }
+                // sfv.process(sigFileSigners);
 
-            } catch (sun.security.pkcs.ParsingException pe) {
-                if (debug != null) debug.println("processEntry caught: "+pe);
-                // ignore and treat as unsigned
-            } catch (IOException ioe) {
-                if (debug != null) debug.println("processEntry caught: "+ioe);
-                // ignore and treat as unsigned
-            } catch (SignatureException se) {
-                if (debug != null) debug.println("processEntry caught: "+se);
-                // ignore and treat as unsigned
-            } catch (NoSuchAlgorithmException nsae) {
-                if (debug != null) debug.println("processEntry caught: "+nsae);
-                // ignore and treat as unsigned
-            } catch (CertificateException ce) {
-                if (debug != null) debug.println("processEntry caught: "+ce);
-                // ignore and treat as unsigned
-            }
+            // } catch (sun.security.pkcs.ParsingException pe) {
+            //     if (debug != null) debug.println("processEntry caught: "+pe);
+            //     // ignore and treat as unsigned
+            // } catch (IOException ioe) {
+            //     if (debug != null) debug.println("processEntry caught: "+ioe);
+            //     // ignore and treat as unsigned
+            // } catch (SignatureException se) {
+            //     if (debug != null) debug.println("processEntry caught: "+se);
+            //     // ignore and treat as unsigned
+            // } catch (NoSuchAlgorithmException nsae) {
+            //     if (debug != null) debug.println("processEntry caught: "+nsae);
+            //     // ignore and treat as unsigned
+            // } catch (CertificateException ce) {
+            //     if (debug != null) debug.println("processEntry caught: "+ce);
+            //     // ignore and treat as unsigned
+            // }
         }
     }
 

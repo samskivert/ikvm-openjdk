@@ -32,7 +32,7 @@ import java.lang.ref.*;
 import java.lang.reflect.*;
 
 import java.security.cert.CertStoreParameters;
-import javax.security.auth.login.Configuration;
+// import javax.security.auth.login.Configuration;
 
 /**
  * This class represents a "provider" for the

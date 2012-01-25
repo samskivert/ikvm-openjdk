@@ -29,11 +29,11 @@ import java.io.FilePermission;
 import java.awt.AWTPermission;
 import java.util.PropertyPermission;
 import java.lang.RuntimePermission;
-import java.net.SocketPermission;
-import java.net.NetPermission;
+// import java.net.SocketPermission;
+// import java.net.NetPermission;
 import java.security.SecurityPermission;
 import java.security.AllPermission;
-import javax.security.auth.AuthPermission;
+// import javax.security.auth.AuthPermission;
 
 /**
  * Permission constants and string constants used to create permissions
@@ -111,32 +111,32 @@ public final class SecurityConstants {
         new AWTPermission("accessSystemTray");
 
     // java.net.URL
-    public static final NetPermission SPECIFY_HANDLER_PERMISSION =
-       new NetPermission("specifyStreamHandler");
+    // public static final NetPermission SPECIFY_HANDLER_PERMISSION =
+    //    new NetPermission("specifyStreamHandler");
 
     // java.net.ProxySelector
-    public static final NetPermission SET_PROXYSELECTOR_PERMISSION =
-       new NetPermission("setProxySelector");
+    // public static final NetPermission SET_PROXYSELECTOR_PERMISSION =
+    //    new NetPermission("setProxySelector");
 
     // java.net.ProxySelector
-    public static final NetPermission GET_PROXYSELECTOR_PERMISSION =
-       new NetPermission("getProxySelector");
+    // public static final NetPermission GET_PROXYSELECTOR_PERMISSION =
+    //    new NetPermission("getProxySelector");
 
     // java.net.CookieHandler
-    public static final NetPermission SET_COOKIEHANDLER_PERMISSION =
-       new NetPermission("setCookieHandler");
+    // public static final NetPermission SET_COOKIEHANDLER_PERMISSION =
+    //    new NetPermission("setCookieHandler");
 
     // java.net.CookieHandler
-    public static final NetPermission GET_COOKIEHANDLER_PERMISSION =
-       new NetPermission("getCookieHandler");
+    // public static final NetPermission GET_COOKIEHANDLER_PERMISSION =
+    //    new NetPermission("getCookieHandler");
 
     // java.net.ResponseCache
-    public static final NetPermission SET_RESPONSECACHE_PERMISSION =
-       new NetPermission("setResponseCache");
+    // public static final NetPermission SET_RESPONSECACHE_PERMISSION =
+    //    new NetPermission("setResponseCache");
 
     // java.net.ResponseCache
-    public static final NetPermission GET_RESPONSECACHE_PERMISSION =
-       new NetPermission("getResponseCache");
+    // public static final NetPermission GET_RESPONSECACHE_PERMISSION =
+    //    new NetPermission("getResponseCache");
 
     // java.lang.SecurityManager, sun.applet.AppletPanel, sun.misc.Launcher
     public static final RuntimePermission CREATE_CLASSLOADER_PERMISSION =
@@ -183,14 +183,14 @@ public final class SecurityConstants {
         new SecurityPermission ("getPolicy");
 
     // java.lang.SecurityManager
-    public static final SocketPermission LOCAL_LISTEN_PERMISSION =
-        new SocketPermission("localhost:1024-", SOCKET_LISTEN_ACTION);
+    // public static final SocketPermission LOCAL_LISTEN_PERMISSION =
+    //     new SocketPermission("localhost:1024-", SOCKET_LISTEN_ACTION);
 
     // javax.security.auth.Subject
-    public static final AuthPermission DO_AS_PERMISSION =
-        new AuthPermission("doAs");
+    // public static final AuthPermission DO_AS_PERMISSION =
+    //     new AuthPermission("doAs");
 
     // javax.security.auth.Subject
-    public static final AuthPermission DO_AS_PRIVILEGED_PERMISSION =
-        new AuthPermission("doAsPrivileged");
+    // public static final AuthPermission DO_AS_PRIVILEGED_PERMISSION =
+    //     new AuthPermission("doAsPrivileged");
 }

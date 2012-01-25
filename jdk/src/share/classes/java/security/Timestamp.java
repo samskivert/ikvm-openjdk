@@ -27,7 +27,7 @@ package java.security;
 
 import java.io.Serializable;
 import java.security.cert.CertPath;
-import java.security.cert.X509Extension;
+// import java.security.cert.X509Extension;
 import java.util.Date;
 
 /**

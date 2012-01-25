@@ -93,9 +93,9 @@ public abstract class URLStreamHandler {
      *               implements the protocol doesn't support this method.
      * @since      1.5
      */
-    protected URLConnection openConnection(URL u, Proxy p) throws IOException {
-        throw new UnsupportedOperationException("Method not implemented.");
-    }
+    // protected URLConnection openConnection(URL u, Proxy p) throws IOException {
+    //     throw new UnsupportedOperationException("Method not implemented.");
+    // }
 
     /**
      * Parses the string representation of a <code>URL</code> into a
@@ -351,14 +351,14 @@ public abstract class URLStreamHandler {
             h += protocol.hashCode();
 
         // Generate the host part.
-        InetAddress addr = getHostAddress(u);
-        if (addr != null) {
-            h += addr.hashCode();
-        } else {
+        // InetAddress addr = getHostAddress(u);
+        // if (addr != null) {
+        //     h += addr.hashCode();
+        // } else {
             String host = u.getHost();
             if (host != null)
                 h += host.toLowerCase().hashCode();
-        }
+        // }
 
         // Generate the file part.
         String file = u.getFile();
@@ -425,24 +425,24 @@ public abstract class URLStreamHandler {
      * IP address.
      * @since 1.3
      */
-    protected synchronized InetAddress getHostAddress(URL u) {
-        if (u.hostAddress != null)
-            return u.hostAddress;
+    // protected synchronized InetAddress getHostAddress(URL u) {
+    //     if (u.hostAddress != null)
+    //         return u.hostAddress;
 
-        String host = u.getHost();
-        if (host == null || host.equals("")) {
-            return null;
-        } else {
-            try {
-                u.hostAddress = InetAddress.getByName(host);
-            } catch (UnknownHostException ex) {
-                return null;
-            } catch (SecurityException se) {
-                return null;
-            }
-        }
-        return u.hostAddress;
-    }
+    //     String host = u.getHost();
+    //     if (host == null || host.equals("")) {
+    //         return null;
+    //     } else {
+    //         try {
+    //             u.hostAddress = InetAddress.getByName(host);
+    //         } catch (UnknownHostException ex) {
+    //             return null;
+    //         } catch (SecurityException se) {
+    //             return null;
+    //         }
+    //     }
+    //     return u.hostAddress;
+    // }
 
     /**
      * Compares the host components of two URLs.
@@ -453,13 +453,14 @@ public abstract class URLStreamHandler {
      * @since 1.3
      */
     protected boolean hostsEqual(URL u1, URL u2) {
-        InetAddress a1 = getHostAddress(u1);
-        InetAddress a2 = getHostAddress(u2);
-        // if we have internet address for both, compare them
-        if (a1 != null && a2 != null) {
-            return a1.equals(a2);
+        // InetAddress a1 = getHostAddress(u1);
+        // InetAddress a2 = getHostAddress(u2);
+        // // if we have internet address for both, compare them
+        // if (a1 != null && a2 != null) {
+        //     return a1.equals(a2);
         // else, if both have host names, compare them
-        } else if (u1.getHost() != null && u2.getHost() != null)
+        // } else
+              if (u1.getHost() != null && u2.getHost() != null)
             return u1.getHost().equalsIgnoreCase(u2.getHost());
          else
             return u1.getHost() == null && u2.getHost() == null;

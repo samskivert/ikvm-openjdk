@@ -25,12 +25,11 @@
 
 package java.awt.datatransfer;
 
-import java.awt.Toolkit;
 import java.io.*;
 import java.nio.*;
 import java.util.*;
 
-import sun.awt.datatransfer.DataTransferer;
+// import sun.awt.datatransfer.DataTransferer;
 
 /**
  * A {@code DataFlavor} provides meta information about data. {@code DataFlavor}
@@ -495,25 +494,25 @@ public class DataFlavor implements Externalizable, Cloneable {
 
     private String paramString() {
         String params = "";
-        params += "mimetype=";
-        if (mimeType == null) {
-            params += "null";
-        } else {
-            params += mimeType.getBaseType();
-        }
-        params += ";representationclass=";
-        if (representationClass == null) {
-           params += "null";
-        } else {
-           params += representationClass.getName();
-        }
-        if (DataTransferer.isFlavorCharsetTextType(this) &&
-            (isRepresentationClassInputStream() ||
-             isRepresentationClassByteBuffer() ||
-             DataTransferer.byteArrayClass.equals(representationClass)))
-        {
-            params += ";charset=" + DataTransferer.getTextCharset(this);
-        }
+        // params += "mimetype=";
+        // if (mimeType == null) {
+        //     params += "null";
+        // } else {
+        //     params += mimeType.getBaseType();
+        // }
+        // params += ";representationclass=";
+        // if (representationClass == null) {
+        //    params += "null";
+        // } else {
+        //    params += representationClass.getName();
+        // }
+        // if (DataTransferer.isFlavorCharsetTextType(this) &&
+        //     (isRepresentationClassInputStream() ||
+        //      isRepresentationClassByteBuffer() ||
+        //      DataTransferer.byteArrayClass.equals(representationClass)))
+        // {
+        //     params += ";charset=" + DataTransferer.getTextCharset(this);
+        // }
         return params;
     }
 
@@ -535,10 +534,10 @@ public class DataFlavor implements Externalizable, Cloneable {
      */
     public static final DataFlavor getTextPlainUnicodeFlavor() {
         String encoding = null;
-        DataTransferer transferer = DataTransferer.getInstance();
-        if (transferer != null) {
-            encoding = transferer.getDefaultUnicodeEncoding();
-        }
+        // DataTransferer transferer = DataTransferer.getInstance();
+        // if (transferer != null) {
+        //     encoding = transferer.getDefaultUnicodeEncoding();
+        // }
         return new DataFlavor(
             "text/plain;charset="+encoding
             +";class=java.io.InputStream", "Plain Text");
@@ -683,46 +682,46 @@ public class DataFlavor implements Externalizable, Cloneable {
 
     private static Comparator textFlavorComparator;
 
-    static class TextFlavorComparator
-        extends DataTransferer.DataFlavorComparator {
+    // static class TextFlavorComparator
+    //     extends DataTransferer.DataFlavorComparator {
 
-        /**
-         * Compares two <code>DataFlavor</code> objects. Returns a negative
-         * integer, zero, or a positive integer as the first
-         * <code>DataFlavor</code> is worse than, equal to, or better than the
-         * second.
-         * <p>
-         * <code>DataFlavor</code>s are ordered according to the rules outlined
-         * for <code>selectBestTextFlavor</code>.
-         *
-         * @param obj1 the first <code>DataFlavor</code> to be compared
-         * @param obj2 the second <code>DataFlavor</code> to be compared
-         * @return a negative integer, zero, or a positive integer as the first
-         *         argument is worse, equal to, or better than the second
-         * @throws ClassCastException if either of the arguments is not an
-         *         instance of <code>DataFlavor</code>
-         * @throws NullPointerException if either of the arguments is
-         *         <code>null</code>
-         *
-         * @see #selectBestTextFlavor
-         */
-        public int compare(Object obj1, Object obj2) {
-            DataFlavor flavor1 = (DataFlavor)obj1;
-            DataFlavor flavor2 = (DataFlavor)obj2;
+    //     /**
+    //      * Compares two <code>DataFlavor</code> objects. Returns a negative
+    //      * integer, zero, or a positive integer as the first
+    //      * <code>DataFlavor</code> is worse than, equal to, or better than the
+    //      * second.
+    //      * <p>
+    //      * <code>DataFlavor</code>s are ordered according to the rules outlined
+    //      * for <code>selectBestTextFlavor</code>.
+    //      *
+    //      * @param obj1 the first <code>DataFlavor</code> to be compared
+    //      * @param obj2 the second <code>DataFlavor</code> to be compared
+    //      * @return a negative integer, zero, or a positive integer as the first
+    //      *         argument is worse, equal to, or better than the second
+    //      * @throws ClassCastException if either of the arguments is not an
+    //      *         instance of <code>DataFlavor</code>
+    //      * @throws NullPointerException if either of the arguments is
+    //      *         <code>null</code>
+    //      *
+    //      * @see #selectBestTextFlavor
+    //      */
+    //     public int compare(Object obj1, Object obj2) {
+    //         DataFlavor flavor1 = (DataFlavor)obj1;
+    //         DataFlavor flavor2 = (DataFlavor)obj2;
 
-            if (flavor1.isFlavorTextType()) {
-                if (flavor2.isFlavorTextType()) {
-                    return super.compare(obj1, obj2);
-                } else {
-                    return 1;
-                }
-            } else if (flavor2.isFlavorTextType()) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
-    }
+    //         if (flavor1.isFlavorTextType()) {
+    //             if (flavor2.isFlavorTextType()) {
+    //                 return super.compare(obj1, obj2);
+    //             } else {
+    //                 return 1;
+    //             }
+    //         } else if (flavor2.isFlavorTextType()) {
+    //             return -1;
+    //         } else {
+    //             return 0;
+    //         }
+    //     }
+    // }
 
     /**
      * Gets a Reader for a text flavor, decoded, if necessary, for the expected
@@ -956,28 +955,28 @@ public class DataFlavor implements Externalizable, Cloneable {
                 return false;
             }
 
-            if ("text".equals(getPrimaryType()) &&
-                DataTransferer.doesSubtypeSupportCharset(this) &&
-                representationClass != null &&
-                !(isRepresentationClassReader() ||
-                  String.class.equals(representationClass) ||
-                  isRepresentationClassCharBuffer() ||
-                  DataTransferer.charArrayClass.equals(representationClass)))
-            {
-                String thisCharset =
-                    DataTransferer.canonicalName(getParameter("charset"));
-                String thatCharset =
-                    DataTransferer.canonicalName(that.getParameter("charset"));
-                if (thisCharset == null) {
-                    if (thatCharset != null) {
-                        return false;
-                    }
-                } else {
-                    if (!thisCharset.equals(thatCharset)) {
-                        return false;
-                    }
-                }
-            }
+            // if ("text".equals(getPrimaryType()) &&
+            //     DataTransferer.doesSubtypeSupportCharset(this) &&
+            //     representationClass != null &&
+            //     !(isRepresentationClassReader() ||
+            //       String.class.equals(representationClass) ||
+            //       isRepresentationClassCharBuffer() ||
+            //       DataTransferer.charArrayClass.equals(representationClass)))
+            // {
+            //     String thisCharset =
+            //         DataTransferer.canonicalName(getParameter("charset"));
+            //     String thatCharset =
+            //         DataTransferer.canonicalName(that.getParameter("charset"));
+            //     if (thisCharset == null) {
+            //         if (thatCharset != null) {
+            //             return false;
+            //         }
+            //     } else {
+            //         if (!thisCharset.equals(thatCharset)) {
+            //             return false;
+            //         }
+            //     }
+            // }
         }
 
         return true;
@@ -1028,21 +1027,21 @@ public class DataFlavor implements Externalizable, Cloneable {
             // MimeType.match which reports a match if one or both of the
             // subTypes is '*', regardless of the other subType.
 
-            if ("text".equals(primaryType) &&
-                DataTransferer.doesSubtypeSupportCharset(this) &&
-                representationClass != null &&
-                !(isRepresentationClassReader() ||
-                  String.class.equals(representationClass) ||
-                  isRepresentationClassCharBuffer() ||
-                  DataTransferer.charArrayClass.equals
-                  (representationClass)))
-            {
-                String charset =
-                    DataTransferer.canonicalName(getParameter("charset"));
-                if (charset != null) {
-                    total += charset.hashCode();
-                }
-            }
+            // if ("text".equals(primaryType) &&
+            //     DataTransferer.doesSubtypeSupportCharset(this) &&
+            //     representationClass != null &&
+            //     !(isRepresentationClassReader() ||
+            //       String.class.equals(representationClass) ||
+            //       isRepresentationClassCharBuffer() ||
+            //       DataTransferer.charArrayClass.equals
+            //       (representationClass)))
+            // {
+            //     String charset =
+            //         DataTransferer.canonicalName(getParameter("charset"));
+            //     if (charset != null) {
+            //         total += charset.hashCode();
+            //     }
+            // }
         }
 
         return total;
@@ -1274,8 +1273,9 @@ public class DataFlavor implements Externalizable, Cloneable {
      * @since 1.4
      */
     public boolean isFlavorTextType() {
-        return (DataTransferer.isFlavorCharsetTextType(this) ||
-                DataTransferer.isFlavorNoncharsetTextType(this));
+        return false;
+        // return (DataTransferer.isFlavorCharsetTextType(this) ||
+        //         DataTransferer.isFlavorNoncharsetTextType(this));
     }
 
    /**

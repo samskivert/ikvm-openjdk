@@ -31,9 +31,9 @@ import java.security.PublicKey;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-import javax.security.auth.x500.X500Principal;
+// import javax.security.auth.x500.X500Principal;
 
-import sun.security.x509.X509CertImpl;
+// import sun.security.x509.X509CertImpl;
 
 /**
  * <p>
@@ -114,7 +114,7 @@ implements X509Extension {
 
     private static final long serialVersionUID = -2491127588187038216L;
 
-    private transient X500Principal subjectX500Principal, issuerX500Principal;
+    // private transient X500Principal subjectX500Principal, issuerX500Principal;
 
     /**
      * Constructor for X.509 certificates.
@@ -247,12 +247,12 @@ implements X509Extension {
      *          distinguished name
      * @since 1.4
      */
-    public X500Principal getIssuerX500Principal() {
-        if (issuerX500Principal == null) {
-            issuerX500Principal = X509CertImpl.getIssuerX500Principal(this);
-        }
-        return issuerX500Principal;
-    }
+    // public X500Principal getIssuerX500Principal() {
+    //     if (issuerX500Principal == null) {
+    //         issuerX500Principal = X509CertImpl.getIssuerX500Principal(this);
+    //     }
+    //     return issuerX500Principal;
+    // }
 
     /**
      * <strong>Denigrated</strong>, replaced by {@linkplain
@@ -290,12 +290,12 @@ implements X509Extension {
      *          distinguished name
      * @since 1.4
      */
-    public X500Principal getSubjectX500Principal() {
-        if (subjectX500Principal == null) {
-            subjectX500Principal = X509CertImpl.getSubjectX500Principal(this);
-        }
-        return subjectX500Principal;
-    }
+    // public X500Principal getSubjectX500Principal() {
+    //     if (subjectX500Principal == null) {
+    //         subjectX500Principal = X509CertImpl.getSubjectX500Principal(this);
+    //     }
+    //     return subjectX500Principal;
+    // }
 
     /**
      * Gets the <code>notBefore</code> date from the validity period of
@@ -505,7 +505,8 @@ implements X509Extension {
      * @since 1.4
      */
     public List<String> getExtendedKeyUsage() throws CertificateParsingException {
-        return X509CertImpl.getExtendedKeyUsage(this);
+        throw new UnsupportedOperationException();
+        // return X509CertImpl.getExtendedKeyUsage(this);
     }
 
     /**
@@ -602,7 +603,8 @@ implements X509Extension {
      */
     public Collection<List<?>> getSubjectAlternativeNames()
         throws CertificateParsingException {
-        return X509CertImpl.getSubjectAlternativeNames(this);
+        throw new UnsupportedOperationException();
+        // return X509CertImpl.getSubjectAlternativeNames(this);
     }
 
     /**
@@ -644,6 +646,7 @@ implements X509Extension {
      */
     public Collection<List<?>> getIssuerAlternativeNames()
         throws CertificateParsingException {
-        return X509CertImpl.getIssuerAlternativeNames(this);
+        throw new UnsupportedOperationException();
+        // return X509CertImpl.getIssuerAlternativeNames(this);
     }
 }
