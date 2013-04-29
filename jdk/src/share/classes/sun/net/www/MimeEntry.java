@@ -216,47 +216,47 @@ public class MimeEntry implements Cloneable {
      * <li>A document (?) --
      * </ol>
      */
-    public Object launch(java.net.URLConnection urlc, InputStream is, MimeTable mt) throws ApplicationLaunchException {
-        switch (action) {
-        case SAVE_TO_FILE:
-            // REMIND: is this really the right thing to do?
-            try {
-                return is;
-            } catch(Exception e) {
-                // I18N
-                return "Load to file failed:\n" + e;
-            }
+    // public Object launch(java.net.URLConnection urlc, InputStream is, MimeTable mt) throws ApplicationLaunchException {
+    //     switch (action) {
+    //     case SAVE_TO_FILE:
+    //         // REMIND: is this really the right thing to do?
+    //         try {
+    //             return is;
+    //         } catch(Exception e) {
+    //             // I18N
+    //             return "Load to file failed:\n" + e;
+    //         }
 
-        case LOAD_INTO_BROWSER:
-            // REMIND: invoke the content handler?
-            // may be the right thing to do, may not be -- short term
-            // where docs are not loaded asynch, loading and returning
-            // the content is the right thing to do.
-            try {
-                return urlc.getContent();
-            } catch (Exception e) {
-                return null;
-            }
+    //     case LOAD_INTO_BROWSER:
+    //         // REMIND: invoke the content handler?
+    //         // may be the right thing to do, may not be -- short term
+    //         // where docs are not loaded asynch, loading and returning
+    //         // the content is the right thing to do.
+    //         try {
+    //             return urlc.getContent();
+    //         } catch (Exception e) {
+    //             return null;
+    //         }
 
-        case LAUNCH_APPLICATION:
-            {
-                String threadName = command;
-                int fst = threadName.indexOf(' ');
-                if (fst > 0) {
-                    threadName = threadName.substring(0, fst);
-                }
+    //     case LAUNCH_APPLICATION:
+    //         {
+    //             String threadName = command;
+    //             int fst = threadName.indexOf(' ');
+    //             if (fst > 0) {
+    //                 threadName = threadName.substring(0, fst);
+    //             }
 
-                return new MimeLauncher(this, urlc, is,
-                                        mt.getTempFileTemplate(), threadName);
-            }
+    //             return new MimeLauncher(this, urlc, is,
+    //                                     mt.getTempFileTemplate(), threadName);
+    //         }
 
-        case UNKNOWN:
-            // REMIND: What do do here?
-            return null;
-        }
+    //     case UNKNOWN:
+    //         // REMIND: What do do here?
+    //         return null;
+    //     }
 
-        return null;
-    }
+    //     return null;
+    // }
 
     public boolean matches(String type) {
         if (starred) {

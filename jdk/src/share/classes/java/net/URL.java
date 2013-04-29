@@ -992,25 +992,25 @@ public final class URL implements java.io.Serializable {
      *             java.net.Proxy)
      * @since      1.5
      */
-    // public URLConnection openConnection(Proxy proxy)
-    //     throws java.io.IOException {
-    //     if (proxy == null) {
-    //         throw new IllegalArgumentException("proxy can not be null");
-    //     }
+    public URLConnection openConnection(Proxy proxy)
+        throws java.io.IOException {
+        if (proxy == null) {
+            throw new IllegalArgumentException("proxy can not be null");
+        }
 
-    //     // Create a copy of Proxy as a security measure
-    //     Proxy p = proxy == Proxy.NO_PROXY ? Proxy.NO_PROXY : sun.net.ApplicationProxy.create(proxy);
-    //     // SecurityManager sm = System.getSecurityManager();
-    //     // if (p.type() != Proxy.Type.DIRECT && sm != null) {
-    //     //     InetSocketAddress epoint = (InetSocketAddress) p.address();
-    //     //     if (epoint.isUnresolved())
-    //     //         sm.checkConnect(epoint.getHostName(), epoint.getPort());
-    //     //     else
-    //     //         sm.checkConnect(epoint.getAddress().getHostAddress(),
-    //     //                         epoint.getPort());
-    //     // }
-    //     return handler.openConnection(this, p);
-    // }
+        // Create a copy of Proxy as a security measure
+        // Proxy p = proxy == Proxy.NO_PROXY ? Proxy.NO_PROXY : sun.net.ApplicationProxy.create(proxy);
+        // SecurityManager sm = System.getSecurityManager();
+        // if (p.type() != Proxy.Type.DIRECT && sm != null) {
+        //     InetSocketAddress epoint = (InetSocketAddress) p.address();
+        //     if (epoint.isUnresolved())
+        //         sm.checkConnect(epoint.getHostName(), epoint.getPort());
+        //     else
+        //         sm.checkConnect(epoint.getAddress().getHostAddress(),
+        //                         epoint.getPort());
+        // }
+        return handler.openConnection(this, proxy);
+    }
 
     /**
      * Opens a connection to this <code>URL</code> and returns an
@@ -1040,8 +1040,7 @@ public final class URL implements java.io.Serializable {
      * @see        java.net.URLConnection#getContent()
      */
     public final Object getContent() throws java.io.IOException {
-        // return openConnection().getContent();
-        throw new UnsupportedOperationException();
+        return openConnection().getContent();
     }
 
     /**
@@ -1060,8 +1059,7 @@ public final class URL implements java.io.Serializable {
      */
     public final Object getContent(Class[] classes)
     throws java.io.IOException {
-        // return openConnection().getContent(classes);
-        throw new UnsupportedOperationException();
+        return openConnection().getContent(classes);
     }
 
     /**
@@ -1131,47 +1129,50 @@ public final class URL implements java.io.Serializable {
 
             // Try java protocol handler
             if (handler == null) {
-                String packagePrefixList = null;
+                // String packagePrefixList = null;
 
-                packagePrefixList
-                    = java.security.AccessController.doPrivileged(
-                    new sun.security.action.GetPropertyAction(
-                        protocolPathProp,""));
-                if (packagePrefixList != "") {
-                    packagePrefixList += "|";
-                }
+                // packagePrefixList
+                //     = java.security.AccessController.doPrivileged(
+                //     new sun.security.action.GetPropertyAction(
+                //         protocolPathProp,""));
+                // if (packagePrefixList != "") {
+                //     packagePrefixList += "|";
+                // }
 
-                // REMIND: decide whether to allow the "null" class prefix
-                // or not.
-                packagePrefixList += "sun.net.www.protocol";
+                // // REMIND: decide whether to allow the "null" class prefix
+                // // or not.
+                // packagePrefixList += "sun.net.www.protocol";
 
-                StringTokenizer packagePrefixIter =
-                    new StringTokenizer(packagePrefixList, "|");
+                // StringTokenizer packagePrefixIter =
+                //     new StringTokenizer(packagePrefixList, "|");
 
-                while (handler == null &&
-                       packagePrefixIter.hasMoreTokens()) {
+                // while (handler == null &&
+                //        packagePrefixIter.hasMoreTokens()) {
 
-                    String packagePrefix =
-                      packagePrefixIter.nextToken().trim();
-                    try {
-                        String clsName = packagePrefix + "." + protocol +
-                          ".Handler";
-                        Class cls = null;
-                        try {
-                            cls = Class.forName(clsName);
-                        } catch (ClassNotFoundException e) {
-                            ClassLoader cl = ClassLoader.getSystemClassLoader();
-                            if (cl != null) {
-                                cls = cl.loadClass(clsName);
-                            }
-                        }
-                        if (cls != null) {
-                            handler  =
-                              (URLStreamHandler)cls.newInstance();
-                        }
-                    } catch (Exception e) {
-                        // any number of exceptions can get thrown here
-                    }
+                //     String packagePrefix =
+                //       packagePrefixIter.nextToken().trim();
+                //     try {
+                //         String clsName = packagePrefix + "." + protocol +
+                //           ".Handler";
+                //         Class cls = null;
+                //         try {
+                //             cls = Class.forName(clsName);
+                //         } catch (ClassNotFoundException e) {
+                //             ClassLoader cl = ClassLoader.getSystemClassLoader();
+                //             if (cl != null) {
+                //                 cls = cl.loadClass(clsName);
+                //             }
+                //         }
+                //         if (cls != null) {
+                //             handler  =
+                //               (URLStreamHandler)cls.newInstance();
+                //         }
+                //     } catch (Exception e) {
+                //         // any number of exceptions can get thrown here
+                //     }
+                // }
+                if ("file".equals(protocol)) {
+                    handler = new sun.net.www.protocol.file.Handler();
                 }
             }
 

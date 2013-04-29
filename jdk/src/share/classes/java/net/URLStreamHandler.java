@@ -93,9 +93,9 @@ public abstract class URLStreamHandler {
      *               implements the protocol doesn't support this method.
      * @since      1.5
      */
-    // protected URLConnection openConnection(URL u, Proxy p) throws IOException {
-    //     throw new UnsupportedOperationException("Method not implemented.");
-    // }
+    protected URLConnection openConnection(URL u, Proxy p) throws IOException {
+        throw new UnsupportedOperationException("Method not implemented.");
+    }
 
     /**
      * Parses the string representation of a <code>URL</code> into a
